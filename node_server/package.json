@@ -4,7 +4,8 @@
   "description": "The RESTful API for our smart solutions semester",
   "main": "main.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "dev": "nodemon main.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/447578/SSS_impact_index_tool/issues"
   },
-  "homepage": "https://github.com/447578/SSS_impact_index_tool#readme"
+  "homepage": "https://github.com/447578/SSS_impact_index_tool#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.4"
+  }
 }
