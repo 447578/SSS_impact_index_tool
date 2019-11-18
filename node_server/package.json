@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/447578/SSS_impact_index_tool#readme",
   "dependencies": {
+    "better-sqlite3": "^5.4.3",
     "express": "^4.17.1",
+    "mysql": "^2.17.1",
     "nodemon": "^1.19.4"
   }
 }

@@ -1,5 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const Database = require('better-sqlite3');
+const fs = require('fs')
+
+
+
+const db = new Database('database.db');
+db.exec(fs.readFileSync('sqlitedatabase.sql').toString());
+
 
 const app = express();
 
