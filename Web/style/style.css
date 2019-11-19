@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+}
+body
+{
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+    
+}
+header
+{
+    background-color: gainsboro;
+    display: flex;
+    width: 85vw;
+    float:right;
+}
+header h1 {
+    margin-left: 50px;
+}
+sidebar 
+{
+    background-color: black;
+    display: block;
+    float: left;
+    width: 15vw;
+    height:100vh;
+    color: whitesmoke;
+    
+}
+
+sidebar li{
+    list-style-type: none;
+    color: whitesmoke;
+    margin: 10px;
+}
+
+sidebar li a{
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.see-more {
+    border: 2px solid whitesmoke;
+    background-color: black;
+    color: whitesmoke;
+    padding: 10px;
+    display: flex;
+    
+}
