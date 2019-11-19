@@ -1,7 +1,7 @@
 create table Cities 
 ( name VARCHAR(100) NOT NULL,
   PRIMARY KEY (name)
- )engine=innodb;
+)engine=innodb;
  
 create table Items
 (
