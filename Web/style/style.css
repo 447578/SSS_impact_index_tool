@@ -1,4 +1,8 @@
-*{
+@import url(https://fonts.googleapis.com/css?family=Lato:700);
+
+*, 
+*:before,
+*:after {
     box-sizing: border-box;
 }
 body
@@ -63,32 +67,28 @@ sidebar li a{
 }
 .icon {
     position: relative;
-    display: inline-block;
-    width: 85wh;
-    align-content:stretch;
+    display: flex;
+   
+    padding-top: 50px;
   
 }
 .icon img {
-    width: 80px;
-    height: auto;
-    
+    width: auto;  
+    height: 5em;
 }
-.column {
-  float: left;
-  width: 25%;
-  padding: 25px 150px 0 50px;
-}
+
 
 /* Clear floats after image containers */
 .icon::after {
   content: "";
   clear: both;
-  display: table;
+
+  
 }
 
 #progressBar {
   width: 90%;
-  margin: -8px 50px 50px 50px;
+  margin: 0px 50px 50px 50px;
  /* margin: 10px auto; */
   height: 22px;
   background-color: #0A5F44;
@@ -108,13 +108,6 @@ sidebar li a{
 }
 
 /* pie charts starts here */
-@import url(https://fonts.googleapis.com/css?family=Lato:700);
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
 
 .set-size {
   font-size: 10em;
@@ -147,29 +140,22 @@ sidebar li a{
   clear: both;
     
 }
-.pie-wrapper .pie {
+
+ .big-pie {
   height: 100%;
   width: 100%;
-  clip: rect(0, 1em, 1em, 0.5em);
-  left: 0;
-  position: absolute;
-  top: 0;
-}
-.pie-wrapper .pie .half-circle {
-  height: 100%;
-  width: 100%;
-  border: 0.1em solid #3498db;
-  border-radius: 50%;
-  clip: rect(0, 0.5em, 1em, 0);
+
+background: conic-gradient(from 0deg, #00A2D3, #5DBB46);
+border-radius: 100%;
   left: 0;
   position: absolute;
   top: 0;
 }
 .pie-wrapper .label {
-  background: #34495e;
+  background: #ececec;
   border-radius: 50%;
   bottom: 0.4em;
-  color: #ecf0f1;
+  color: black;
   cursor: default;
   display: block;
   font-size: 0.25em;
@@ -181,74 +167,17 @@ sidebar li a{
   top: 0.4em;
 }
 .pie-wrapper .label .smaller {
-  color: #bdc3c7;
+  color: black;
   font-size: .45em;
   padding-bottom: 20px;
   vertical-align: super;
 }
-.pie-wrapper .shadow {
-  height: 100%;
-  width: 100%;
-  border: 0.1em solid #bdc3c7;
-  border-radius: 50%;
-}
-.pie-wrapper.style-2 .label {
+
+.pie-wrapper.circle .label {
   background: none;
   color: #7f8c8d;
 }
-.pie-wrapper.style-2 .label .smaller {
-  color: #bdc3c7;
-}
-.pie-wrapper.progress-90 .pie {
-  clip: rect(auto, auto, auto, auto);
-}
-.pie-wrapper.progress-90 .pie .half-circle {
-  border-color: #e67e22;
-}
-.pie-wrapper.progress-90 .pie .left-side {
-  -webkit-transform: rotate(324deg);
-          transform: rotate(324deg);
-}
-.pie-wrapper.progress-90 .pie .right-side {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-.pie-wrapper.progress-45 .pie .half-circle {
-  border-color: #1abc9c;
-}
-.pie-wrapper.progress-45 .pie .left-side {
-  -webkit-transform: rotate(162deg);
-          transform: rotate(162deg);
-}
-.pie-wrapper.progress-45 .pie .right-side {
-  display: none;
-}
-.pie-wrapper.progress-75 .pie {
-  clip: rect(auto, auto, auto, auto);
-}
-.pie-wrapper.progress-75 .pie .half-circle {
-  border-color: #8e44ad;
-}
-.pie-wrapper.progress-75 .pie .left-side {
-  -webkit-transform: rotate(270deg);
-          transform: rotate(270deg);
-}
-.pie-wrapper.progress-75 .pie .right-side {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-.pie-wrapper.progress-95 .pie {
-  clip: rect(auto, auto, auto, auto);
-}
-.pie-wrapper.progress-95 .pie .half-circle {
-  border-color: #e74c3c;
-}
-.pie-wrapper.progress-95 .pie .left-side {
-  -webkit-transform: rotate(342deg);
-          transform: rotate(342deg);
-}
-.pie-wrapper.progress-95 .pie .right-side {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
+
+
+
 
