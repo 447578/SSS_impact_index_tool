@@ -14,34 +14,39 @@ router.get('/', function (req, res) {
         };
         response.push(city);
     }
-    res.status(200).json({ response: response});
+    if (response.length < 1) {
+        res.status(404).json({ response: "There are no cities registered" });
+    }
+    else {
+        res.status(200).json({ response: response });
+    }
 })
 
 
-router.post('/:cityname', function(req,res){
+router.post('/:cityname', function (req, res) {
     let cityname = req.params.cityname;
     let stmt = database.prepare('SELECT * FROM cities WHERE name = ?');
     let response = stmt.get(cityname);
-    if(!response){
+    if (!response) {
         stmt = database.prepare('INSERT INTO cities (name) VALUES (?)').run(cityname);
-        res.status(200).json({ response: "The city of " + cityname + " has been inserted into the database."})
+        res.status(200).json({ response: "The city of " + cityname + " has been inserted into the database." })
     }
-    else{
-        res.status(400).json({ response: "That city already exists."});
+    else {
+        res.status(400).json({ response: "That city already exists." });
     }
 })
 
-router.delete('/:cityname', function(req,res){
+router.delete('/:cityname', function (req, res) {
     let cityname = req.params.cityname;
     let stmt = database.prepare('SELECT * FROM cities WHERE name = ?');
     let response = stmt.get(cityname);
-    if(!response){
-        res.status(400).json({ response: "The city of " + cityname + " does not exist."})
+    if (!response) {
+        res.status(400).json({ response: "The city of " + cityname + " does not exist." })
     }
-    else{
+    else {
         stmt = database.prepare('DELETE FROM cities WHERE name = ?').run(cityname);
         stmt = database.prepare('DELETE FROM items WHERE city = ?').run(cityname);
-        res.status(200).json({ response: "The city of " + cityname + " has been deleted."});
+        res.status(200).json({ response: "The city of " + cityname + " has been deleted." });
     }
 })
 
