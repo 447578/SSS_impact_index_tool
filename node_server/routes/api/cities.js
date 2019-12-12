@@ -1,50 +1,65 @@
 const router = require('express').Router();
 const database = require('better-sqlite3')("database.db");
 
-router.get('/', function (req, res) {
-    let stmt = database.prepare('SELECT * FROM cities');
-    let cities = stmt.all();
-    let response = [];
-    for (let i = 0; i < cities.length; i++) {
-        let categories = database.prepare('SELECT * FROM categories WHERE city = ? ORDER BY category').all(cities[i].name);
-        let categoriesOut = [];
-        for(let j = 0; j < categories; j++){
-            let steps = [];
-            stepsQuery = database.prepare('SELECT * FROM steps WHERE city = ? AND category = ?').all(cities[i].name, categories[j].category);
-            stepsQuery.forEach(element => {
-                steps.push(element.step);
-            });
-            let items = [];
-            itemsQuery = database.prepare('SELECT * FROM items WHERE city = ? AND category = ?').all(cities[i].name, categories[j].category);
-            itemsQuery.forEach(element =>{
-                items.push({name: element.item_name,
-                            score: element.score,
-                            story: element.story})
-            })
-            let category = {
-                name: categories[j].category,
-                pitfall: categories[j].pitfall,
-                opportunity: categories[j].opportunity,
-                items: items,
-                steps: steps
+function getAllCities() {
+    return new Promise(function getCities(resolve) {
+        let stmt = database.prepare('SELECT * FROM cities');
+        let cities = stmt.all();
+        let response = [];
+        for (let i = 0; i < cities.length; i++) {
+            let categories = database.prepare('SELECT * FROM categories WHERE city = ? ORDER BY category').all(cities[i].name);
+            let categoriesOut = [];
+            for (let j = 0; j < categories.length; j++) {
+                let steps = [];
+                stepsQuery = database.prepare('SELECT * FROM steps WHERE city = ? AND category = ?').all(cities[i].name, categories[j].category);
+                for (let x = 0; x < stepsQuery.length; x++) {
+                    steps.push(stepsQuery[x].step);
+                }
+                let items = [];
+                itemsQuery = database.prepare('SELECT * FROM items WHERE city = ? AND category = ?').all(cities[i].name, categories[j].category);
+                for (let x = 0; x < itemsQuery.length; x++) {
+                    items.push({
+                        name: itemsQuery[x].item_name,
+                        score: itemsQuery[x].score,
+                        story: itemsQuery[x].story
+                    })
+                }
+                let category = {
+                    name: categories[j].category,
+                    pitfall: categories[j].pitfall,
+                    opportunity: categories[j].opportunity,
+                    items: items,
+                    steps: steps
+                }
+
+                categoriesOut.push(category)
             }
 
-            categoriesOut.push(category)
+
+            let city = {
+                name: cities[i].name,
+                categories: categoriesOut
+            };
+            response.push(city);
+            resolve(response)
+        }
+    }
+    )
+
+
+}
+
+router.get('/', function (req, res) {
+    getAllCities().then(function (fulfilled) {
+        if (fulfilled.length < 1) {
+            res.status(404).json({ response: "There are no cities registered" });
+        }
+        else {
+            res.status(200).json({ response: fulfilled });
         }
 
 
-        let city = {
-            name: cities[i].name,
-            categories: categoriesOut
-        };
-        response.push(city);
-    }
-    if (response.length < 1) {
-        res.status(404).json({ response: "There are no cities registered" });
-    }
-    else {
-        res.status(200).json({ response: response });
-    }
+    })
 })
 
 

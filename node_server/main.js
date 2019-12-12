@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const Database = require('better-sqlite3');
 const fs = require('fs')
 
-
+// fs.unlinkSync('database.db');
 
 const db = new Database('database.db');
 db.exec(fs.readFileSync('sqlitedatabase.sql').toString());

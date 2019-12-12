@@ -5,19 +5,21 @@ const database = require('better-sqlite3')("database.db");
 router.post('/', function (req, res) {
     let name = req.body.name;
     let categories = req.body.categories;
-
+    console.log(name);
+    console.log(categories[1]);
     database.prepare("INSERT INTO cities(name) VALUES (?)").run(name);
+    for(let i = 0; i < categories.length; i++){
+        database.prepare("INSERT INTO categories(city, category, pitfall, opportunity) VALUES (?,?,?,?)").run(name, categories[i].name, categories[i].pitfall, categories[i].opportunity);
+        for(let j = 0; j < categories[i].items.length; j++){
+            database.prepare("INSERT INTO items(city, item_name, score, story, category) VALUES (?,?,?,?,?)").run(name, categories[i].items[j].name, categories[i].items[j].score, categories[i].items[j].story, categories[i].name);
+        }
+        for( let x = 0; x < categories[i].steps.length; x++){
+            database.prepare("INSERT INTO steps(city, category, step) VALUES (?,?,?)").run(name, categories[i].name, categories[i].steps[x]);
+        }
+    }
 
-    categories.foreach( element =>{
-        database.prepare("INSERT INTO categories(city, category, pitfall, opportunity) VALUES (?,?,?,?)").run(name, element.name, element.pitfall, element.opportunity, element);
-        element.items.foreach( item =>{
-            database.prepare("INSERT INTO items(city, item_name, score, story, category) VALUES (?,?,?,?,?)").run(name, item.name, item.score, item.story, element.name);
-        })
-        element.steps(foreach( step =>{
-            database.prepare("INSERT INTO steps(city, category, step) VALUES (?,?,?)").run(name, element.name, step);
-        }))
-    })
-
+    console.log(database.prepare("SELECT * FROM items WHERE city = ? ").all(name));
+    console.log(database.prepare("SELECT * FROM categories WHERE city = ?").all(name));
     res.status(200).json({ response: "The city of " + name + " has been succesfully inserted into the database."});
 
 })
