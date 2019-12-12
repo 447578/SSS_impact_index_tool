@@ -6,11 +6,36 @@ router.get('/', function (req, res) {
     let cities = stmt.all();
     let response = [];
     for (let i = 0; i < cities.length; i++) {
-        stmt = database.prepare('SELECT * FROM items WHERE city = ? ORDER BY category');
-        let answer = stmt.all(cities[i].name);
+        let categories = database.prepare('SELECT * FROM categories WHERE city = ? ORDER BY category').all(cities[i].name);
+        let categoriesOut = [];
+        for(let j = 0; j < categories; j++){
+            let steps = [];
+            stepsQuery = database.prepare('SELECT * FROM steps WHERE city = ? AND category = ?').all(cities[i].name, categories[j].category);
+            stepsQuery.forEach(element => {
+                steps.push(element.step);
+            });
+            let items = [];
+            itemsQuery = database.prepare('SELECT * FROM items WHERE city = ? AND category = ?').all(cities[i].name, categories[j].category);
+            itemsQuery.forEach(element =>{
+                items.push({name: element.item_name,
+                            score: element.score,
+                            story: element.story})
+            })
+            let category = {
+                name: categories[j].category,
+                pitfall: categories[j].pitfall,
+                opportunity: categories[j].opportunity,
+                items: items,
+                steps: steps
+            }
+
+            categoriesOut.push(category)
+        }
+
+
         let city = {
             name: cities[i].name,
-            items: answer
+            categories: categoriesOut
         };
         response.push(city);
     }
@@ -46,6 +71,8 @@ router.delete('/:cityname', function (req, res) {
     else {
         stmt = database.prepare('DELETE FROM cities WHERE name = ?').run(cityname);
         stmt = database.prepare('DELETE FROM items WHERE city = ?').run(cityname);
+        stmt = database.prepare('DELETE FROM categories WHERE city = ?').run(cityname);
+        stmt = database.prepare('DELETE FROM steps WHERE city = ?').run(cityname);
         res.status(200).json({ response: "The city of " + cityname + " has been deleted." });
     }
 })

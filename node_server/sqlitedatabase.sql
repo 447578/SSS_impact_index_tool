@@ -7,14 +7,14 @@ create table if not exists items(
 	item_name text,
 	score double not null,
 	story text not null,
-	category integer,
+	category text,
 	PRIMARY KEY(city, item_name)
 	FOREIGN KEY(city) REFERENCES cities(name)
 );
 
 create table if not exists categories(
 	city text,
-	category integer,
+	category text,
 	pitfall text,
 	opportunity text,
 	PRIMARY KEY(city, category)

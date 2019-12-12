@@ -3,39 +3,22 @@ const database = require('better-sqlite3')("database.db");
 
 
 router.post('/', function (req, res) {
-    let items = req.body.items;
-    if (!items) {
-        let item_name = req.body.itemname;
-        let city = req.body.city;
-        let score = req.body.score;
-        let story = req.body.story;
-        let category = req.body.category;
+    let name = req.body.name;
+    let categories = req.body.categories;
 
-        let foreignCheck = database.prepare('SELECT 1 FROM cities WHERE name = ?');
-        let cityCheck = foreignCheck.get(city);
-        if (!cityCheck) {
-            database.prepare('INSERT INTO cities VALUES (?)').run(city);
-        }
-        let statement = database.prepare('INSERT INTO items VALUES (?,?,?,?,?)');
-        let info = statement.run(city, item_name, score, story, category);
-        res.status(200).json({ response: "Successfully added item into the database." })
-    }
-    else {
-        for (let i = 0; i < items.length; i++) {
-            let foreignCheck = database.prepare('SELECT 1 FROM cities WHERE name = ?');
-            let cityCheck = foreignCheck.get(items[i].city);
-            if (!cityCheck) {
-                database.prepare('INSERT INTO cities VALUES (?)').run(items[i].city);
-            }
-            try {
-                database.prepare('INSERT INTO items VALUES (?,?,?,?,?)').run(items[i].city, items[i].itemname, items[i].score, items[i].story, items[i].category);
-            }
-            catch (err) {
-                res.status(400).json({ response: "Some of the values inserted already exist and have therefore not been changed, use put instead." })
-            }
-        }
-        res.status(200).json({ response: "Items succesfully inserted." })
-    }
+    database.prepare("INSERT INTO cities(name) VALUES (?)").run(name);
+
+    categories.foreach( element =>{
+        database.prepare("INSERT INTO categories(city, category, pitfall, opportunity) VALUES (?,?,?,?)").run(name, element.name, element.pitfall, element.opportunity, element);
+        element.items.foreach( item =>{
+            database.prepare("INSERT INTO items(city, item_name, score, story, category) VALUES (?,?,?,?,?)").run(name, item.name, item.score, item.story, element.name);
+        })
+        element.steps(foreach( step =>{
+            database.prepare("INSERT INTO steps(city, category, step) VALUES (?,?,?)").run(name, element.name, step);
+        }))
+    })
+
+    res.status(200).json({ response: "The city of " + name + " has been succesfully inserted into the database."});
 
 })
 
