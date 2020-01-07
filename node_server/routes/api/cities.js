@@ -11,12 +11,12 @@ function getAllCities() {
             let categoriesOut = [];
             for (let j = 0; j < categories.length; j++) {
                 let steps = [];
-                stepsQuery = database.prepare('SELECT * FROM steps WHERE city = ? AND category = ?').all(cities[i].name, categories[j].category);
+                let stepsQuery = database.prepare('SELECT * FROM steps WHERE city = ? AND category = ?').all(cities[i].name, categories[j].category);
                 for (let x = 0; x < stepsQuery.length; x++) {
                     steps.push(stepsQuery[x].step);
                 }
                 let items = [];
-                itemsQuery = database.prepare('SELECT * FROM items WHERE city = ? AND category = ?').all(cities[i].name, categories[j].category);
+                let itemsQuery = database.prepare('SELECT * FROM items WHERE city = ? AND category = ?').all(cities[i].name, categories[j].category);
                 for (let x = 0; x < itemsQuery.length; x++) {
                     items.push({
                         name: itemsQuery[x].item_name,
