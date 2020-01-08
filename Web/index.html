@@ -19,8 +19,9 @@
 <!-- -->
     <div ng-controller="DemoCtrl">
         <input type="range" name="rangeslider" class="slider" min="0.00" max="1.00" step="0.01" ng-model="progress" />
-        <div class="set-size charts-container">
+        <div class="charts-container">
           <div class="square">
+            <h2>Personal wellbeing</h2>
             <div class="pie-wrapper">
               <div class="big pie-1"></div>
               <span class="label">{{progress * 100 - 7 | number:0}}<span class="smaller">/100</span></span>
@@ -28,6 +29,7 @@
           </div>
 
           <div class="square">
+            <h2>Lifestye and behaviour</h2>
             <div class="pie-wrapper">
               <div class="big pie-2"></div>
               <span class="label">{{progress * 100 - 22 | number:0}}<span class="smaller">/100</span></span>
@@ -35,6 +37,7 @@
           </div>
 
           <div class="square">
+            <h2>Medical care and prevention</h2>
             <div class="pie-wrapper">
               <div class="big pie-3"></div>
               <span class="label">{{progress * 100 + 15 | number:0}}<span class="smaller">/100</span></span>
@@ -42,6 +45,7 @@
           </div>
 
           <div class="square">
+            <h2>External environment</h2>
             <div class="pie-wrapper">
               <div class="big pie-4"></div>
               <span class="label">{{progress * 100 + 11| number:0}}<span class="smaller">/100</span></span>
@@ -55,86 +59,56 @@
   <sidebar>
         <div class="menu">
 
-            <ul>
+            <ul id="myList">
 							<li>
 									<img src="images/bycs-logo.png">
 							</li>
-                <li>
-                    <a href="#">
-                        <span>Amsterdam</span>
-                    </a>
+                <li class="btn">
+                    <a href="#">Amsterdam</a>
                 </li>
-                <li>
-                    <a href="#">
-                      <span>Nairobi</span>
-                    </a>
+                <li class="btn">
+                    <a href="#">Nairobi</a>
                 </li>
-                <li>
-                    <a href="#">
-                      <span>Jakarta</span>
-                    </a>
+                <li class="btn">
+                    <a href="#">Jakarta</a>
                 </li>
-                <li>
-                    <a href="#">
-                        <span>Bogota</span>
-                    </a>
+                <li class="btn">
+                    <a href="#">Bogota</a>
                 </li>
-                <li>
-                    <a href="#">
-                      <span>Manilla</span>
-                    </a>
+                <li class="btn">
+                    <a href="#">Manilla</a>
                 </li>
-                <li>
-                    <a href="#">
-                      <span>Accra</span>
-                    </a>
+                <li class="btn">
+                    <a href="#">Accra</a>
                 </li>
-                <li>
-                    <a href="#">
-                        <span>Mumbai</span>
-                    </a>
+                <li class="btn">
+                    <a href="#">Mumbai</a>
                 </li>
-                <li>
-                    <a href="#">
-                      <span>Lagos</span>
-                    </a>
+                <li class="btn">
+                    <a href="#">Lagos</a>
                 </li>
-                <li>
-                    <a href="#">
-                      <span>Dakar</span>
-                    </a>
+                <li class="btn">
+                    <a href="#">Dakar</a>
                 </li>
-                <li>
-                    <a href="#">
-                        <span>Kampala</span>
-                    </a>
+                <li class="btn">
+                    <a href="#">Kampala</a>
                 </li>
-                <li>
-                    <a href="#">
-                      <span>Pretoria</span>
-                    </a>
+                <li class="btn">
+                    <a href="#">Pretoria</a>
                 </li>
-                <li>
-                    <a href="#">
-                      <span>Delhi</span>
-                    </a>
+                <li class="btn">
+                    <a href="#">Delhi</a>
                 </li>
-                <li>
-                    <a href="#">
-                        <span>Sai Gon</span>
-                    </a>
+                <li class="btn">
+                    <a href="#">Sai Gon</a>
                 </li>
-                <li>
-                    <a href="#">
-                      <span>Bangkok</span>
-                    </a>
+                <li class="btn">
+                    <a href="#">Bangkok</a>
                 </li>
-                <li>
-                    <a href="#">
-                      <span>Dhaka</span>
-                    </a>
+                <li class="btn">
+                    <a href="#">Dhaka</a>
                 </li>
-                <li class="see-more">
+                <li class="btn see-more">
                       <span><button type="button" disabled>See All Cities</button></span>
                       <span><button type="button" class="click">></button></span>
 

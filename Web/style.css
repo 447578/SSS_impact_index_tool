@@ -37,7 +37,6 @@ header h1 {
   margin: 15px;
 }
 .charts-container {
-
   display: grid;
   grid-template-columns: auto auto;
     justify-content: center;
@@ -45,12 +44,13 @@ header h1 {
   color: #444;
   font-family: 'Lato', Tahoma, Geneva, sans-serif;
     font-size: 12em;
-
+padding-left: 30px;
 }
 .charts-container:after {
   clear: both;
   content: '';
   display: table;
+
 }
 .square {
     box-shadow: 2px 4px 18px #888888;
@@ -60,6 +60,23 @@ header h1 {
     background-position: center bottom;;
     background-repeat: no-repeat;
     margin: 30px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+
+.square h2 {
+  font-size: 25px;
+  text-align: left;
+  width: 60%;
+  vertical-align: middle;
+  text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+  padding: 60px 0px;
+  margin-left: 15px;
+  overflow: hidden;
+  color: black;
+  position: absolute;
 }
 
 /*pie charts */
@@ -67,10 +84,8 @@ header h1 {
   height: 0.8em;
   width: 0.8em;
   float: right;
-  margin: 30px 30px 30px 300px;
+  margin: 30px 30px 30px 320px;
   position: relative;
-  background-color: #ececec;
-
 
 }
 .pie-wrapper:nth-child(3n + 1) {
@@ -189,9 +204,6 @@ border-radius: 100%;
   border-color: #000 transparent transparent;
   position: absolute;
   top: 48px;
-
-
-
 }
 .range-slider > span.slider-container > span.bar-btn > span {
 font-size: 1em;
@@ -222,23 +234,19 @@ ul {
     margin:0;
     padding: 0;
 }
-sidebar li{
-    list-style-type: none;
-    color: whitesmoke;
-    margin-right: 30px;
-}
 
 sidebar li a{
     color: whitesmoke;
     text-decoration: none;
     display: block;
     padding: 8px 16px;
-    padding-right: 50px;
+    padding-right: 80px;
 }
 
-sidebar li a:hover, a:active {
+.active, .btn:hover  {
+    color: #000;
     background-color: #ffe412;
-    color: black;
+
 }
 sidebar img{
   width: 150px;
@@ -255,9 +263,10 @@ button {
     background-color: black;
     color: whitesmoke;
     border: 2px solid whitesmoke;
-    padding: 8px 16px;
+    padding: 10px 20px 10px 16px;
     font-family: 'roboto', sans-serif;
-    font-size:13px;
+    font-size:18px;
+    text-align: left;
 }
 
 .title {
