@@ -3,14 +3,17 @@
 var app = angular.module('demo', ['angular-progress-arc']);
 
 app.controller('DemoCtrl', function ($scope) {
-
   // Init progress value
   $scope.progress = 0.74;
+  var newNumber = 74 - 7;
+
 });
+
 
 
 $("document").ready(function() {
   $(".slider").rangeslider();
+
 });
 $.fn.rangeslider = function(options) {
   var obj = this;
@@ -20,6 +23,7 @@ $.fn.rangeslider = function(options) {
   obj.attr("oninput", "updateSlider(this)");
   updateSlider(this);
   return obj;
+
 };
 
 function updateSlider(passObj) {
