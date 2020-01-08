@@ -34,7 +34,7 @@ header
     z-index: 2;
 }
 header h1 {
-  margin: 15px;
+  margin: 15px 30px;
 }
 .charts-container {
   display: grid;
@@ -243,11 +243,11 @@ sidebar li a{
     padding-right: 80px;
 }
 
-.active, .btn:hover  {
+.active, .btn:hover, button:hover, .active a, a:hover   {
     color: #000;
     background-color: #ffe412;
-
 }
+
 sidebar img{
   width: 150px;
   height: auto;
