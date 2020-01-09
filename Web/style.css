@@ -4,9 +4,7 @@
 *:after
 {
   box-sizing: border-box;
-
 }
-
 body {
   padding: 0;
   margin: 0;
@@ -33,7 +31,7 @@ article {
 header
 {
     background-color: #272727;
-    width: 100vw;
+    width: 100%;
     padding-left: 220px;
     float:right;
     display: flex;
@@ -231,7 +229,7 @@ sidebar
 {
     background-color: black;
     float: left;
-    height:100vh;
+    height:100%;
     color: whitesmoke;
     position: fixed;
     font-family: 'Roboto', sans-serif;
@@ -298,7 +296,7 @@ button {
   position: relative;
   overflow: hidden;
   box-shadow: 2px 4px 18px #888888;
-  visibility: hidden; 
+  visibility: hidden;
 }
 .popup-title  {
   width: 100%;
