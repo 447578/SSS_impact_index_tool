@@ -50,3 +50,9 @@ for (var i = 0; i < btns.length; i++) {
   this.className += " active";
   });
 }
+
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+  document.getElementById("myArticle").style.filter= "brightness(20%)";
+}

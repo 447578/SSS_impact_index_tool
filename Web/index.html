@@ -3,6 +3,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BYCS Impact Index</title>
   <link rel="stylesheet" href="./style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
@@ -12,7 +13,7 @@
   <header>
         <h1> AMSTERDAM</h1>
   </header>
-  <article>
+  <article id="myArticle">
     <div class="title">
       <h2>HOW CAN AMSTERDAM BE 100% BICYCLE FRIENDLY?</h2>
     </div>
@@ -28,10 +29,10 @@
             </div>
           </div>
 
-          <div class="square">
-            <h2>Lifestye and behaviour</h2>
+          <div class="square" onclick="myFunction()">
+            <h2 >Lifestye and behaviour </h2>
             <div class="pie-wrapper">
-              <div class="big pie-2"></div>
+              <div class="big pie-2"  ></div>
               <span class="label">{{progress * 100 - 22 | number:0}}<span class="smaller">/100</span></span>
             </div>
           </div>
@@ -117,6 +118,35 @@
             </ul>
     </div>
     </sidebar>
+    <div class="popup">
+      <div class="popup-content" id="myPopup">
+        <div class="popup-title">
+          <h3>Lifestye and behaviour</h3>
+          <h4>52<span class="tiny">/100</span></h4>
+        </div>
+        <div class="report">
+           <div class="smallSlider">
+             <h4>EATING BEHAVIOUR</h4>
+             <div id="progressBar">
+               <div class="bar1"></div>
+             </div>
+             <h4>HEALTH AWARENESS</h4>
+             <div id="progressBar">
+               <div class="bar2"></div>
+             </div>
+             <h4>SPORT</h4>
+             <div id="progressBar">
+               <div class="bar3"></div>
+             </div>
+           </div>
+           <p><b>By making the citizens of Amsterdam more aware of health issuses caused by air pollutions, bicycle usage can be increased greatly.</b></p>
+           <p>"Naturally, the understanding of the great significance of the major and minor objectives effectively differentiates the content strategy and The Challenge of the Transparent Balance" (Titus Adams in The Book of the Competitive Development)</p>
+           <h5>PITFALL</h5>
+           <p>"Speaking about comparison of a number of the ground-breaking technology and strategic planning, a closer study of the sources and influences of the functional testing has more common features with The Enhancement of Large Leadership" (Eusebio Akin in The Book of the Entity Integrity).
+
+        </div>
+      </div>
+    </div>
 <!-- partial -->
 
 

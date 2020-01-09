@@ -10,7 +10,7 @@
 body {
   padding: 0;
   margin: 0;
-  text-align: center;
+  overflow: hidden;
 }
 
 article {
@@ -275,4 +275,107 @@ button {
     font-size: 1em;
     padding: 50px 0px 0px 50px;
     text-align: left;
+}
+
+.popup .show{
+  visibility: visible;
+
+}
+.show article {
+  opacity: 0.5;
+}
+
+.popup-content{
+  width: 900px;
+  height: 700px;
+  background-color: white;
+  top: -700px;
+  margin: 10px 20px 0px 300px ;
+  z-index: 5;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 2px 4px 18px #888888;
+  visibility: hidden;
+}
+.popup-title  {
+  width: 100%;
+  padding: 20px 20px;
+  background-image: url("images/skyline-flipped.png");
+  background-color: #ececec;
+  background-size: 350px;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  border-bottom: 2px solid grey;
+  text-align: center;
+
+}
+.popup-title h3, h4{
+display: inline;
+font-family: 'Oswald';
+text-transform: uppercase;
+font-size: 1.5em;
+margin-left: 200px;}
+
+.popup-title h4 {
+ float: right;
+ margin: 0px 80px;
+}
+.tiny {
+  font-size: 0.5em;
+}
+.report {
+  width: 100%;
+  column-count: 2;
+  column-width: 50%;
+  column-gap: 40px;
+  margin: 15px;
+  padding: 15px;
+  font-size: 15px;
+
+
+}
+.report h5{
+  font-size: 15px;
+  text-align: left;
+  font-family: 'Oswald';
+  text-transform: uppercase;
+
+}
+.report p{
+  margin-right: 30px;
+  text-align: justify;
+  line-height: 15px;
+}
+.smallSlider {
+  padding-bottom: 10px;
+}
+.smallSlider h4{
+  width: 100%;
+  font-size: 15px;
+  font-family: 'Oswald', sans-serif;
+  text-align: right;
+  margin-left: 0px;
+  line-height: 60px;
+}
+
+#progressBar {
+  width: 90%;
+  height: 15px;
+  background-color: lightgrey;
+}
+#progressBar div {
+  height: 15px;
+  text-align: right;
+  background-color: #B94FD3;
+  box-sizing: border-box;
+}
+
+.bar1 {
+  width: 60%;
+}
+.bar2 {
+  width: 40%;
+}
+.bar3 {
+  width: 60%;
 }
