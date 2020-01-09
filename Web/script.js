@@ -51,8 +51,12 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
 
-function myFunction() {
-  var popup = document.getElementById("myPopup");
-  popup.classList.toggle("show");
-  document.getElementById("myArticle").style.filter= "brightness(20%)";
+function openPopup() {
+  document.getElementById("myPopup").style.visibility = "visible";
+  document.getElementById("overlay").style.visibility = "visible";
+}
+
+function closePopup() {
+  document.getElementById("myPopup").style.visibility = "hidden";
+  document.getElementById("overlay").style.visibility = "hidden";
 }
