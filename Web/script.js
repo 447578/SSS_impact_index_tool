@@ -20,18 +20,18 @@ xhr.send(JSON.stringify(data));
 
 
 function getAllCities(){
-    ajax('get', 'http://localhost:8080/api/cities/', null, function(cities){
-        data.cities = cities;
-        console.log(cities);
-        for(const city of cities){
+    ajax('get', 'http://localhost:8080/api/cities/', null, function(reply){
+        data.cities = reply.response;
+        console.log(reply.response);
+        for(const city of data.cities){
             //List them into the city list on the left.
         }
     })
 }
 
 function getOneCity(cityname){
-    ajax('get', 'http://localhost:8080/api/cities/' + cityname, null, function(city){
-        data.currentCity = city;
+    ajax('get', 'http://localhost:8080/api/cities/' + cityname, null, function(reply){
+        data.currentCity = reply.response;
         console.log(city)
         //HERE YOU SET THE WEBSITE TO THE VALUES LISTED INSIDE city, if you want to do this later, it will be stored in data.currentCity
     })
