@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const database = require('better-sqlite3')("database.db");
 
+
 function getAllCities() {
     return new Promise(function getCities(resolve) {
         let stmt = database.prepare('SELECT * FROM cities');
@@ -61,7 +62,6 @@ router.get('/', function (req, res) {
 
     })
 })
-
 
 router.post('/:cityname', function (req, res) {
     let cityname = req.params.cityname;
