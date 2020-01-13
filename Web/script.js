@@ -71,10 +71,162 @@ function ajax(method, path, callback) {
 
 
 function getAllCities() {
-    ajax('get', 'http://wwww.localhost:8080/api/cities/', function (reply) {
-        data.cities = reply.response;
-        console.log(reply.response);
+  var myJasonObject = {"response": [
+          {
+              "name": "Amsterdam",
+              "categories": [
+                  {
+                      "name": "External environment",
+                      "pitfall": "Explosive vegetation",
+                      "opportunity": "Increased bicycling",
+                      "items": [
+                          {
+                              "name": "Air pollution",
+                              "score": 6.9,
+                              "story": "Great smoke clouds over the hills bring darkness from above"
+                          },
+                          {
+                              "name": "Climate",
+                              "score": 7.1,
+                              "story": "Too cool for school"
+                          },
+                          {
+                              "name": "Co-participation",
+                              "score": 6.7,
+                              "story": "Lonely bicyclists are lonely."
+                          },
+                          {
+                              "name": "Culture",
+                              "score": 9.5,
+                              "story": "Many cultures, handle it!"
+                          },
+                          {
+                              "name": "Infrastructure",
+                              "score": 8.4,
+                              "story": "Many roundabouts and great Public Transport"
+                          },
+                          {
+                              "name": "Innovation",
+                              "score": 9,
+                              "story": "This is a journey into innovation, loads of innovation."
+                          },
+                          {
+                              "name": "Municipal policy",
+                              "score": 10,
+                              "story": "Bicycle centric municipality"
+                          },
+                          {
+                              "name": "Noise pollution",
+                              "score": 8.2,
+                              "story": "High buildings block sound"
+                          },
+                          {
+                              "name": "Physical geography",
+                              "score": 8.5,
+                              "story": "ponttijden.nl"
+                          },
+                          {
+                              "name": "SES",
+                              "score": 8.2,
+                              "story": "I dunno"
+                          }
+                      ],
+                      "steps": [
+                          "step1",
+                          "step2"
+                      ]
+                  },
+                  {
+                      "name": "Lifestyle and behaviour",
+                      "pitfall": "Unhealthy lifestyle and behaviour",
+                      "opportunity": "Healthy lifestyle and behaviour",
+                      "items": [
+                          {
+                              "name": "Eating behaviour",
+                              "score": 5.5,
+                              "story": "Too much cheese"
+                          },
+                          {
+                              "name": "Health awareness",
+                              "score": 4.4,
+                              "story": " 'I dunno' - Amsterdammer"
+                          },
+                          {
+                              "name": "Sport",
+                              "score": 5.6,
+                              "story": "Bicycling"
+                          }
+                      ],
+                      "steps": [
+                          "step1",
+                          "step2"
+                      ]
+                  },
+                  {
+                      "name": "Medical care and prevention",
+                      "pitfall": "Mental retardation",
+                      "opportunity": "Supremacy",
+                      "items": [
+                          {
+                              "name": "Medical care",
+                              "score": 8.8,
+                              "story": " asdf"
+                          },
+                          {
+                              "name": "Preventive care",
+                              "score": 10,
+                              "story": "We have no data on this xD"
+                          },
+                          {
+                              "name": "Selfmanagement",
+                              "score": 8.9,
+                              "story": "Cheese"
+                          }
+                      ],
+                      "steps": [
+                          "step1",
+                          "step2"
+                      ]
+                  },
+                  {
+                      "name": "Personal wellbeing",
+                      "pitfall": "Cheese overdose",
+                      "opportunity": "asdf",
+                      "items": [
+                          {
+                              "name": "Aging",
+                              "score": 4.7,
+                              "story": "Malding"
+                          },
+                          {
+                              "name": "High blood pressure",
+                              "score": 8.7,
+                              "story": "Stress"
+                          },
+                          {
+                              "name": "Obesity",
+                              "score": 4.5,
+                              "story": "Cheese overdose"
+                          },
+                          {
+                              "name": "Physical health",
+                              "score": 8.9,
+                              "story": "Because"
+                          }
+                      ],
+                      "steps": [
+                          "step1",
+                          "step2"
+                      ]
+                  }
+              ]
+          }
+      ] }
+
+        data.cities = myJasonObject.response;
+
         var citylist = document.getElementById("myList");
+
         for (const city of data.cities) {
             var singleCityNode = document.createElement("LI");
             singleCityNode.classList.add("BTN");
@@ -82,10 +234,11 @@ function getAllCities() {
             singleCityA.innerText = city.name;
             singleCityNode.appendChild(singleCityA);
             citylist.appendChild(singleCityNode);
+            citylist.insertBefore(singleCityNode, citylist.childNodes[2]);
         }
         inflateCity(data.cities[0])
-    })
-}
+    }
+
 
 function inflateCity(city) {
     let totalScore = 0;
