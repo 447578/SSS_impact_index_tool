@@ -27,6 +27,7 @@ function getAllCities() {
                 }
                 let category = {
                     name: categories[j].category,
+                    description: categories[j].description,
                     pitfall: categories[j].pitfall,
                     opportunity: categories[j].opportunity,
                     items: items,
@@ -63,17 +64,22 @@ router.get('/', function (req, res) {
     })
 })
 
-router.post('/:cityname', function (req, res) {
-    let cityname = req.params.cityname;
-    let stmt = database.prepare('SELECT * FROM cities WHERE name = ?');
-    let response = stmt.get(cityname);
-    if (!response) {
-        stmt = database.prepare('INSERT INTO cities (name) VALUES (?)').run(cityname);
-        res.status(200).json({ response: "The city of " + cityname + " has been inserted into the database." })
+router.post('/', function (req, res) {
+    let cityname = req.body.name;
+    let categories = req.body.categories;
+
+    database.prepare('INSERT INTO cities VALUES (?)').run(cityname);
+
+    for(const category of categories){
+        database.prepare('INSERT INTO categories VALUES (?,?,?,?,?)').run(cityname, category.name, category.description, category.pitfall, category.opportunity);
+        for(const item of category.items){
+            database.prepare('INSERT INTO items VALUES (?,?,?,?,?)').run(cityname, item.name, item.score, item.story, category.name)
+        }
+        for(const step of category.steps){
+            database.prepare('INSERT INTO steps VALUES (?,?,?)').run(cityname, category.name, step);
+        }
     }
-    else {
-        res.status(400).json({ response: "That city already exists." });
-    }
+    res.status(200).json({ response: cityname + " has been successfully inserted."})
 })
 
 router.delete('/:cityname', function (req, res) {

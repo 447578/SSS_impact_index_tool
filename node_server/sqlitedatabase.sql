@@ -15,6 +15,7 @@ create table if not exists items(
 create table if not exists categories(
 	city text,
 	category text,
+	description text,
 	pitfall text,
 	opportunity text,
 	PRIMARY KEY(city, category)
