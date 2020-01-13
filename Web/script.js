@@ -10,7 +10,6 @@ app.controller('DemoCtrl', function ($scope) {
 
 
 
-
 $("document").ready(function () {
     $(".slider").rangeslider();
 
