@@ -135,24 +135,83 @@ function inflateCity(city) {
         categoryDiv.appendChild(name);
         categoryDiv.appendChild(pieWrapper);
 
-        categoryDiv.addEventListener("click", openPopup(category));
+        categoryDiv.addEventListener("click", function(){openPopup(category, categoryScore)});
 
         totalScore += categoryScore;
         categoryBlockContainer.appendChild(categoryDiv);
         categoryCounter++;
     }
+    let finalScore = totalScore / 4;
 
 
 
 }
 
-function openPopup(category) {
-    document.getElementById("myPopup").style.visibility = "visible";
-    document.getElementById("overlay").style.visibility = "visible";
+function openPopup(category, score) {
+    let myPopup = document.getElementById("myPopup")
+    let overlay = document.getElementById("overlay")
+
+    let title = document.createElement('div');
+    title.classList.add('popup-title');
+    let titleText = document.createElement('h3');
+    titleText.appendChild(document.createTextNode(category.name));
+
+    let categoryScore = document.createElement('h4');
+    categoryScore.innerText = score;
+    let tinyScore = document.createElement('span');
+    tinyScore.classList.add('tiny');
+    tinyScore.innerText = '/100';
+
+    categoryScore.appendChild(tinyScore);
+    title.appendChild(titleText);
+    title.appendChild(categoryScore);
+
+    let report = document.createElement('div');
+    report.classList.add('report');
+    
+    let smallSlider = document.createElement('div');
+    smallSlider.classList.add('smallSlider');
+    for(const item of category.items){
+        let itemName = document.createElement('h4');
+        itemName.appendChild(document.createTextNode(item.name));
+
+        let progressBar = document.createElement('div');
+        progressBar.id = "progressBar";
+        let itemScore = item.score * 10;
+        progressBar.style = "width: " + itemScore + "%";
+
+        let actualBar = document.createElement('div');
+        actualBar.classList.add("bar1");
+
+        progressBar.appendChild(actualBar);
+        smallSlider.appendChild(itemName);
+        smallSlider.appendChild(progressBar);
+    }
+
+    let pitfall = document.createElement('h5');
+    pitfall.appendChild(document.createTextNode('PITFALL'));
+    let pitfallText = document.createElement('p');
+    pitfallText.innerText = category.pitfall;
+
+    report.appendChild(smallSlider);
+    report.appendChild(pitfall);
+    report.appendChild(pitfallText);
+    
+    myPopup.appendChild(title);
+    myPopup.appendChild(report);
+    
+    
+    
+    myPopup.style.visibility = "visible";
+    overlay.style.visibility = "visible";
 }
 
 function closePopup() {
-    document.getElementById("myPopup").style.visibility = "hidden";
+    const popup = document.getElementById('myPopup');
+    while(popup.firstChild){
+        popup.removeChild(popup.firstChild)
+    }
+    popup.style.visibility = "hidden";
     document.getElementById("overlay").style.visibility = "hidden";
 }
 
