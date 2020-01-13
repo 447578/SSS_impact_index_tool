@@ -1,15 +1,12 @@
-
-
 var app = angular.module('demo', ['angular-progress-arc']);
 
 let data = {};
 
-app.controller('DemoCtrl', function ($scope) {
-    // Init progress value
-    $scope.progress = 0.74;
-    var newNumber = 74 - 7;
 
-});
+app.controller('DemoCtrl', function ($scope) {
+
+    $scope.progress = 0.70;
+})
 
 
 
@@ -76,7 +73,7 @@ function ajax(method, path, callback) {
             }
         }
     }
-    
+
     xhr.open(method, path, true);
     xhr.send(JSON.stringify(data));
 }
@@ -86,11 +83,78 @@ function getAllCities() {
     ajax('get', 'http://wwww.localhost:8080/api/cities/', function (reply) {
         data.cities = reply.response;
         console.log(reply.response);
+        var citylist = document.getElementById("myList");
         for (const city of data.cities) {
-            //List them into the city list on the left.
+            var singleCityNode = document.createElement("LI");
+            singleCityNode.classList.add("BTN");
+            let singleCityA = document.createElement("A");
+            singleCityA.innerText = city.name;
+            singleCityNode.appendChild(singleCityA);
+            citylist.appendChild(singleCityNode);
         }
+        inflateCity(data.cities[0])
     })
 }
+
+function inflateCity(city) {
+    let totalScore = 0;
+    let categoryBlockContainer = document.getElementsByClassName("charts-container")[0];
+    let categoryCounter = 1;
+    for (const category of city.categories) {
+        //Make the block
+        let categoryDiv = document.createElement('div');
+        categoryDiv.classList.add("square");
+        let name = document.createElement('H2');
+        let text = document.createTextNode(category.name);
+        name.appendChild(text);
+        
+        let pieWrapper = document.createElement('div');
+        pieWrapper.classList.add('pie-wrapper');
+
+        let bigPie = document.createElement('div');
+        bigPie.classList.add('big');
+        let pieName = "pie-" + categoryCounter;
+        bigPie.classList.add(pieName);
+
+        let label = document.createElement('span');
+        label.classList.add('label')
+        label.classList.add('ng-binding');
+        
+        let smaller = document.createElement('span');
+        smaller.classList.add('smaller');
+        smaller.innerText = "/100";
+
+
+        let categoryScore = 0;
+        //Set block name to category.name
+
+        for (const item of category.items) {
+            categoryScore += item.score;
+            //Inflate a bar on the popup
+
+        }
+        let oneDecimalCategoryScore = Math.round( categoryScore );
+        //Set score
+        label.innerText = oneDecimalCategoryScore;
+        
+        label.appendChild(smaller);
+        pieWrapper.appendChild(bigPie);
+        pieWrapper.appendChild(label);
+
+        categoryDiv.appendChild(name);
+        categoryDiv.appendChild(pieWrapper);
+
+
+
+        totalScore += categoryScore;
+        categoryBlockContainer.appendChild(categoryDiv);
+        categoryCounter++;
+    }
+
+
+
+}
+
 
 
 getAllCities();
