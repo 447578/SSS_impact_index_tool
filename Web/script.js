@@ -51,15 +51,6 @@ for (var i = 0; i < btns.length; i++) {
     });
 }
 
-function openPopup() {
-    document.getElementById("myPopup").style.visibility = "visible";
-    document.getElementById("overlay").style.visibility = "visible";
-}
-
-function closePopup() {
-    document.getElementById("myPopup").style.visibility = "hidden";
-    document.getElementById("overlay").style.visibility = "hidden";
-}
 
 
 
@@ -107,7 +98,7 @@ function inflateCity(city) {
         let name = document.createElement('H2');
         let text = document.createTextNode(category.name);
         name.appendChild(text);
-        
+
         let pieWrapper = document.createElement('div');
         pieWrapper.classList.add('pie-wrapper');
 
@@ -119,7 +110,7 @@ function inflateCity(city) {
         let label = document.createElement('span');
         label.classList.add('label')
         label.classList.add('ng-binding');
-        
+
         let smaller = document.createElement('span');
         smaller.classList.add('smaller');
         smaller.innerText = "/100";
@@ -133,10 +124,10 @@ function inflateCity(city) {
             //Inflate a bar on the popup
 
         }
-        let oneDecimalCategoryScore = Math.round( categoryScore );
+        let oneDecimalCategoryScore = Math.round(categoryScore);
         //Set score
         label.innerText = oneDecimalCategoryScore;
-        
+
         label.appendChild(smaller);
         pieWrapper.appendChild(bigPie);
         pieWrapper.appendChild(label);
@@ -144,7 +135,7 @@ function inflateCity(city) {
         categoryDiv.appendChild(name);
         categoryDiv.appendChild(pieWrapper);
 
-
+        categoryDiv.addEventListener("click", openPopup(category));
 
         totalScore += categoryScore;
         categoryBlockContainer.appendChild(categoryDiv);
@@ -154,6 +145,17 @@ function inflateCity(city) {
 
 
 }
+
+function openPopup(category) {
+    document.getElementById("myPopup").style.visibility = "visible";
+    document.getElementById("overlay").style.visibility = "visible";
+}
+
+function closePopup() {
+    document.getElementById("myPopup").style.visibility = "hidden";
+    document.getElementById("overlay").style.visibility = "hidden";
+}
+
 
 
 
