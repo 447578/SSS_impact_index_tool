@@ -157,7 +157,8 @@ function openPopup(category, score) {
     titleText.appendChild(document.createTextNode(category.name));
 
     let categoryScore = document.createElement('h4');
-    categoryScore.innerText = score;
+    let roundedScore = Math.round(score);
+    categoryScore.innerText = roundedScore;
     let tinyScore = document.createElement('span');
     tinyScore.classList.add('tiny');
     tinyScore.innerText = '/100';
@@ -187,15 +188,34 @@ function openPopup(category, score) {
         smallSlider.appendChild(itemName);
         smallSlider.appendChild(progressBar);
     }
+    
+
+
+    let description = document.createElement('h5');
+    description.appendChild(document.createTextNode('DESCRIPTION'));
+    let descriptionText = document.createElement('p');
+    descriptionText.innerText = category.description; 
 
     let pitfall = document.createElement('h5');
     pitfall.appendChild(document.createTextNode('PITFALL'));
     let pitfallText = document.createElement('p');
     pitfallText.innerText = category.pitfall;
 
+    let opportunity = document.createElement('h5');
+    opportunity.appendChild(document.createTextNode('OPPORTUNITY'));
+    let opportunityText = document.createElement('p');
+    opportunityText.innerText = category.opportunity;
+
     report.appendChild(smallSlider);
+
+    report.appendChild(description);
+    report.appendChild(descriptionText);
+
     report.appendChild(pitfall);
     report.appendChild(pitfallText);
+
+    report.appendChild(opportunity);
+    report.appendChild(opportunityText);
     
     myPopup.appendChild(title);
     myPopup.appendChild(report);
