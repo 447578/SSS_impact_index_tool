@@ -3,10 +3,7 @@ var app = angular.module('demo', ['angular-progress-arc']);
 let data = {};
 
 
-app.controller('DemoCtrl', function ($scope) {
 
-    $scope.progress = 0.70;
-})
 
 
 
@@ -14,29 +11,56 @@ $("document").ready(function () {
     $(".slider").rangeslider();
 
 });
-$.fn.rangeslider = function (options) {
-    var obj = this;
-    var defautValue = obj.attr("value");
-    obj.wrap("<span class='range-slider'></span>");
-    obj.after("<span class='slider-container'><span class='bar'><span></span></span><span class='bar-btn'><span>0</span></span></span>");
-    obj.attr("oninput", "updateSlider(this)");
-    updateSlider(this);
-    return obj;
+
+  $.fn.rangeslider = function (options) {
+  (function() {
+
+  	const circleRange = document.querySelector('.pie-wrapper')
+  	let isDragging
+
+  	circleRange.addEventListener('mousedown',()=>{isDragging = true})
+
+  	circleRange.addEventListener('mouseup',()=>{isDragging = false})
+
+  	window.addEventListener('mousemove',e=>{
+  		const slider = document.querySelector('.circleslider')
+  		const info = document.querySelector('.label')
+  		const box = circleRange.getBoundingClientRect()
+  		const {atan2, PI, round} = Math
+  		let angle
+  		let centerX
+  		let centerY
+  		let deltaX
+  		let deltaY
+  		let posX
+  		let posY
+  		if(isDragging) {
+  			centerX = (circleRange.offsetWidth / 2) + box.left
+  			centerY = (circleRange.offsetHeight / 2) + box.top
+  			posX = e.pageX
+  			posY = e.pageY
+  			deltaY = centerY - posY
+  			deltaX = centerX - posX
+  			angle = atan2(deltaY, deltaX) * (180 / PI)
+  			angle -= 90
+  			if(angle < 0)
+  				angle += 360
+  			angle = round(angle)
+  			slider.style.transform = `rotate(${angle}deg)`
+  			info.textContent = Math.ceil(angle/3.6)
+        document.getElementById("myRange").value = Math.ceil(angle/3.6*0.25);
+
+		     console.log(angle)
+}
+  	})
+  })()
+
+
+
 
 };
 
-function updateSlider(passObj) {
-    var obj = $(passObj);
-    var value = obj.val();
-    var min = obj.attr("min");
-    var max = obj.attr("max");
-    var range = Math.round(max - min);
-    var percentage = Math.round((value - min) * 100 / range);
-    var nextObj = obj.next();
-    nextObj.find("span.bar-btn").css("left", percentage + "%");
-    nextObj.find("span.bar > span").css("width", percentage + "%");
-    nextObj.find("span.bar-btn > span").text(percentage);
-};
+
 //Active class
 var header = document.getElementById("myList");
 var btns = header.getElementsByClassName("btn");
@@ -259,13 +283,18 @@ function inflateCity(city) {
         let pieName = "pie-" + categoryCounter;
         bigPie.classList.add(pieName);
 
-        let label = document.createElement('span');
-        label.classList.add('label')
+        let label = document.createElement('div');
+        label.classList.add('label');
+
         label.classList.add('ng-binding');
 
         let smaller = document.createElement('span');
         smaller.classList.add('smaller');
         smaller.innerText = "/100";
+
+        let circleslider = document.createElement('div');
+        circleslider.classList.add('circleslider');
+
 
 
         let categoryScore = 0;
@@ -283,6 +312,8 @@ function inflateCity(city) {
         label.appendChild(smaller);
         pieWrapper.appendChild(bigPie);
         pieWrapper.appendChild(label);
+        pieWrapper.appendChild(circleslider);
+
 
         categoryDiv.appendChild(name);
         categoryDiv.appendChild(pieWrapper);
@@ -321,7 +352,7 @@ function openPopup(category, score) {
 
     let report = document.createElement('div');
     report.classList.add('report');
-    
+
     let smallSlider = document.createElement('div');
     smallSlider.classList.add('smallSlider');
     for(const item of category.items){
@@ -340,13 +371,13 @@ function openPopup(category, score) {
         smallSlider.appendChild(itemName);
         smallSlider.appendChild(progressBar);
     }
-    
+
 
 
     let description = document.createElement('h5');
     description.appendChild(document.createTextNode('DESCRIPTION'));
     let descriptionText = document.createElement('p');
-    descriptionText.innerText = category.description; 
+    descriptionText.innerText = category.description;
 
     let pitfall = document.createElement('h5');
     pitfall.appendChild(document.createTextNode('PITFALL'));
@@ -368,12 +399,12 @@ function openPopup(category, score) {
 
     report.appendChild(opportunity);
     report.appendChild(opportunityText);
-    
+
     myPopup.appendChild(title);
     myPopup.appendChild(report);
-    
-    
-    
+
+
+
     myPopup.style.visibility = "visible";
     overlay.style.visibility = "visible";
 }

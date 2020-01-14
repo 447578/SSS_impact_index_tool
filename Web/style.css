@@ -100,46 +100,88 @@ padding-left: 30px;
   clear: both;
 }
 
- .big {
-  height: 100%;
-  width: 100%;
-border-radius: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-}
-.pie-1
-    {background: conic-gradient(from 0deg, #00A2D3, #5DBB46);}
-.pie-2
-    {background: conic-gradient(from 0deg, #B94FD3, #5DBB46);}
-.pie-3
-    {background: conic-gradient(from 0deg, #FD4F00, #5DBB46);}
-.pie-4
-    {background: conic-gradient(from 0deg, #FFE412, #5DBB46);}
 
-.pie-wrapper .label {
-  background: #ececec;
-  border-radius: 50%;
-  color: black;
-  cursor: default;
-  display: block;
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.2em;
-  font-weight: 700;
-  line-height: 3em;
-  position: absolute;
-  text-align: center;
-  bottom: 0.4em;
-  left: 0.4em;
-  right: 0.4em;
-  top: 0.4em;
+.pie-1 {
+  position: relative;
+	width: 10rem;
+	height: 10rem;
+	background: conic-gradient(from 0deg, #FFE412, #5DBB46);
+	border-radius: 50%;
 }
+.pie-2 {
+  position: relative;
+	width: 10rem;
+	height: 10rem;
+	background: conic-gradient(from 0deg, #B94FD3, #5DBB46);
+	border-radius: 50%;
+}
+.pie-3 {
+position: relative;
+width: 10rem;
+height: 10rem;
+background: conic-gradient(from 0deg, #FD4F00, #5DBB46);
+border-radius: 50%;
+}
+.pie-4 {
+position: relative;
+width: 10rem;
+height: 10rem;
+background: conic-gradient(from 0deg, #FFE412, #5DBB46);
+border-radius: 50%;
+}
+
+
 .pie-wrapper .label .smaller {
   color: black;
   font-size: .45em;
   padding-bottom: 20px;
 
 }
+
+
+/*new pie chart*/
+.pie-wrapper .label {
+	position: absolute;
+	top: 52%;
+	left: 52%;
+	transform: translate(-50%,-50%);
+	background-color: white;
+	border-radius: 50%;
+	width: 8rem;
+	height: 8rem;
+	text-align: center;
+	color: black;
+	font-family: 'Oswald', serif;
+	font-size: 2.5rem;
+	font-weight: bold;
+	line-height: 8rem;
+	user-select: none;
+}
+
+.pie-wrapper .circleslider {
+	position: absolute;
+	width: 20%;
+	height: 62%;
+	left: 42%;
+	transform-origin: center bottom;
+
+	border-left: 15px solid transparent;
+   border-right: 15px solid transparent;
+   border-top: 15px solid black;
+	margin-top: -175px;
+}
+
+.pie-wrapper .circleslider::before {
+	content: '';
+	position: absolute;
+	background-color: black;
+	width: 0.15rem;
+	height: 1rem;
+	transform: translate(0%, 0%);
+	cursor: pointer;
+}
+
+
 
 /* bar slider */
 .range-slider {
@@ -150,77 +192,42 @@ border-radius: 100%;
   padding-bottom: 50px;
    -webkit-appearance: none;
    text-align: center;
-
-
 }
 .slider {
   text-align: center;
   height: 22px;
-
-}
-.range-slider > input { /*must insync with span.slider-container */
-  opacity: 0;
-  width: 100%;
-  position: relative;
-  z-index: 1;
-  margin-top: 4px;
-
 }
 
-.range-slider > span.slider-container {
-  display: inline-block;
-  position: absolute;
-  top: 2px;
-  left: 35px;
-  right: 15px;
-  z-index: 0;
+/*new bar slider */
+input[type="range"] {
+    margin: auto;
+    margin-left: 3rem;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    height: 20px;
+    width: 100%;
+    cursor: pointer;
+
 
 }
 
-.range-slider > span.slider-container > span.bar {
-  background-color: #ffe412;
-  display: inline-block;
-  position: absolute;
-  top: 12px;
-  left: 16px;
-  right: -16px;
-  height: 20px;
-  overflow: hidden;
-
-}
-.range-slider > span.slider-container > span.bar > span {
-  background: #5bba4a;
-  display: inline-block;
-  float: left;
-  height:20px;
-}
-
-/* triangle button */
-.range-slider > span.slider-container > span.bar-btn {
-  position: absolute;
-  padding-top: 26px;
-  text-align: right;
-  font-weight: bold;
-  top: -52px;
-}
-
-.range-slider > span.slider-container > span.bar-btn > span:before {
-  content: "";
-  display: inline-block;
-  border-width: 16px;
-  border-style: solid;
-  border-color: #000 transparent transparent;
-  position: absolute;
-  top: 48px;
-}
-.range-slider > span.slider-container > span.bar-btn > span {
-font-size: 1em;
- font-family: 'Oswald';
+::-webkit-slider-runnable-track {
+    background: #FFE412;
 
 }
 
-.range-slider > span.slider-container > span.bar-btn > span:after {
-  content: "%";
+/*
+ * 1. Set to 0 width and remove border for a slider without a thumb
+ */
+::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 2px; /* 1 */
+    height: 25px;
+    background: black;
+    box-shadow: -100vw 0 0 100vw #5DBB46;
+
+     /* 1 */
 
 }
 
