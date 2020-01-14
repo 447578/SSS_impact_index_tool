@@ -20,8 +20,6 @@ $("document").ready(function () {
 
   	window.addEventListener('mousemove',e=>{
   		const slider = document.querySelector('.circleslider')
-      //why doesn't this work?
-      slider.style.transform = "rotate(180degree)"
   		const info = document.querySelector('.label')
   		const box = circleRange.getBoundingClientRect()
   		const {atan2, PI, round} = Math
@@ -47,17 +45,11 @@ $("document").ready(function () {
   			slider.style.transform = `rotate(${angle}deg)`
   			info.textContent = Math.ceil(angle/3.6)
         document.getElementById("myRange").value = Math.ceil(angle/3.6*0.25);
-
 		     console.log(angle)
 }
   	})
   })()
-
-
-
-
 };
-
 
 //Active class
 var header = document.getElementById("myList");
@@ -71,9 +63,6 @@ for (var i = 0; i < btns.length; i++) {
         this.className += " active";
     });
 }
-
-
-
 
 
 function ajax(method, path, callback) {
@@ -283,8 +272,6 @@ function inflateCity(city) {
 
         let label = document.createElement('div');
         label.classList.add('label');
-
-        label.classList.add('ng-binding');
 
         let smaller = document.createElement('span');
         smaller.classList.add('smaller');

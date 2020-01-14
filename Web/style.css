@@ -163,12 +163,13 @@ border-radius: 50%;
 	width: 20%;
 	height: 62%;
 	left: 42%;
+  transform: rotate(222deg);
 	transform-origin: center bottom;
-
 	border-left: 15px solid transparent;
    border-right: 15px solid transparent;
    border-top: 15px solid black;
 	margin-top: -175px;
+
 }
 
 .pie-wrapper .circleslider::before {
@@ -184,15 +185,7 @@ border-radius: 50%;
 
 
 /* bar slider */
-.range-slider {
-  display: inline-block;
-  width: 100%;
-  box-sizing: border-box;
-  position: relative;
-  padding-bottom: 50px;
-   -webkit-appearance: none;
-   text-align: center;
-}
+
 .slider {
   text-align: center;
   height: 22px;
