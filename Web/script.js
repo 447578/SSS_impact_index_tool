@@ -3,27 +3,25 @@ var app = angular.module('demo', ['angular-progress-arc']);
 let data = {};
 
 
-
-
-
-
 $("document").ready(function () {
     $(".slider").rangeslider();
 
 });
 
   $.fn.rangeslider = function (options) {
+    //How to make this into a loop of pie- ? Now it only works on the 1st one.
   (function() {
 
   	const circleRange = document.querySelector('.pie-wrapper')
   	let isDragging
 
   	circleRange.addEventListener('mousedown',()=>{isDragging = true})
-
   	circleRange.addEventListener('mouseup',()=>{isDragging = false})
 
   	window.addEventListener('mousemove',e=>{
   		const slider = document.querySelector('.circleslider')
+      //why doesn't this work?
+      slider.style.transform = "rotate(180degree)"
   		const info = document.querySelector('.label')
   		const box = circleRange.getBoundingClientRect()
   		const {atan2, PI, round} = Math
@@ -294,6 +292,7 @@ function inflateCity(city) {
 
         let circleslider = document.createElement('div');
         circleslider.classList.add('circleslider');
+
 
 
 
