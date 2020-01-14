@@ -86,7 +86,10 @@ padding-left: 30px;
   color: black;
   position: absolute;
 }
-
+.square h2:hover {
+  text-shadow: 2px 4px 8px #888888;
+  cursor: default;
+}
 /*pie charts */
 .pie-wrapper {
   height: 0.8em;
@@ -145,7 +148,7 @@ border-radius: 50%;
 	top: 52%;
 	left: 52%;
 	transform: translate(-50%,-50%);
-	background-color: white;
+	background-color: whitesmoke;
 	border-radius: 50%;
 	width: 8rem;
 	height: 8rem;
@@ -163,7 +166,6 @@ border-radius: 50%;
 	width: 20%;
 	height: 62%;
 	left: 42%;
-  transform: rotate(222deg);
 	transform-origin: center bottom;
 	border-left: 15px solid transparent;
    border-right: 15px solid transparent;

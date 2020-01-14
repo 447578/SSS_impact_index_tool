@@ -20,10 +20,8 @@ function makeSliders() {
 
         circles[i].addEventListener('mousedown', () => { isDraggingArray[i] = true });
         circles[i].addEventListener('mouseup', () => { isDraggingArray[i] = false });
-
         circles[i].addEventListener('mousemove', e => {
             let slider = document.getElementsByClassName('circleslider')[i];
-            slider.style.transform = "rotate(180degree)";
 
             const box = circles[i].getBoundingClientRect()
             const { atan2, PI, round } = Math
@@ -48,9 +46,7 @@ function makeSliders() {
                 angle = round(angle)
                 slider.style.transform = `rotate(${angle}deg)`;
                 let info = circles[i].getElementsByClassName('label')[0];
-                info.textContent = Math.ceil(angle / 3.6)
-                document.getElementById("myRange").value = Math.ceil(angle / 3.6 * 0.25);
-
+                info.textContent = Math.ceil(angle / 3.6);
                 console.log(angle)
             }
         })
@@ -58,7 +54,7 @@ function makeSliders() {
 }
 
 $.fn.rangeslider = function (options) {
-    
+
     makeSliders();
 };
 
@@ -260,6 +256,7 @@ function inflateCity(city) {
         let name = document.createElement('H2');
         let text = document.createTextNode(category.name);
         name.appendChild(text);
+        name.addEventListener("click", function () { openPopup(category, categoryScore) });
 
         let pieWrapper = document.createElement('div');
         pieWrapper.classList.add('pie-wrapper');
@@ -300,15 +297,15 @@ function inflateCity(city) {
         categoryDiv.appendChild(name);
         categoryDiv.appendChild(pieWrapper);
 
-        categoryDiv.addEventListener("click", function () { openPopup(category, categoryScore) });
+
 
         totalScore += categoryScore;
         categoryBlockContainer.appendChild(categoryDiv);
         categoryCounter++;
     }
+
     let finalScore = totalScore / 4;
-
-
+    document.getElementById("myRange").value = finalScore;
 
 }
 
