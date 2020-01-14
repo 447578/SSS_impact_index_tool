@@ -76,9 +76,6 @@ for (var i = 0; i < btns.length; i++) {
 }
 
 
-
-
-
 function ajax(method, path, callback) {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -274,8 +271,6 @@ function inflateCity(city) {
 
         let label = document.createElement('div');
         label.classList.add('label');
-
-        label.classList.add('ng-binding');
 
         let smaller = document.createElement('span');
         smaller.classList.add('smaller');
