@@ -47,7 +47,7 @@ function makeSliders() {
                     angle += 360
                 angle = round(angle)
                 slider.style.transform = `rotate(${angle}deg)`;
-                let info = circles[i].getElementsByClassName('ng-binding')[0];
+                let info = circles[i].getElementsByClassName('label')[0];
                 info.textContent = Math.ceil(angle / 3.6)
                 document.getElementById("myRange").value = Math.ceil(angle / 3.6 * 0.25);
 
