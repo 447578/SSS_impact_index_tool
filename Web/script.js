@@ -11,21 +11,19 @@ $("document").ready(function () {
 //version 2
 
 function makeSliders() {
-    
-
     let circles = document.getElementsByClassName('pie-wrapper');
     let isDraggingArray = [];
     for (let i = 0; i < circles.length; i++) {
         let score = data.categoryValues[i];
         let slider = document.getElementsByClassName('circleslider')[i];
 
-        slider.style.transform = `rotate(${ score *3.6 }deg)`;
+        slider.style.transform = `rotate(${score * 3.6}deg)`;
         isDraggingArray.push('false');
 
         circles[i].addEventListener('mousedown', () => { isDraggingArray[i] = true });
         circles[i].addEventListener('mouseup', () => { isDraggingArray[i] = false });
         circles[i].addEventListener('mousemove', e => {
-            
+
 
             const box = circles[i].getBoundingClientRect()
             const { atan2, PI, round } = Math
@@ -57,6 +55,34 @@ function makeSliders() {
         })
     }
 }
+
+function updateBottomSliders(newValue) {
+    let difference = data.totalScore - newValue;
+    let sliders = document.getElementsByClassName('circleslider');
+    let infos = document.getElementsByClassName('label');
+    let singleChange = difference / data.categoryValues.length;
+    if (difference > 0) {
+        for(let i = 0; i <data.categoryValues.length; i++){
+            data.categoryValues[i] + singleChange;
+        }
+        recursiveCheckIfWrong();
+    }
+    if (difference < 0) {
+
+    }
+}
+
+function recursiveCheckIfWrong(){
+    for(let i = 0; i < data.categoryValues.length; i++){
+        if(data.categoryValues[i] > 100){
+            
+        }
+        else if(data.categoryValues[i] < 0){
+
+        }
+    }
+}
+
 
 $.fn.rangeslider = function (options) {
 
@@ -314,20 +340,15 @@ function inflateCity(city) {
     let finalScore = totalScore / 4;
     data.totalScore = finalScore;
     setTopBar();
-
+    document.getElementById('myRange').addEventListener('change', (event => { updateBottomSliders(event.target.value) }))
 }
-
-function setTopBar(){
+function setTopBar() {
     let totalScore = 0;
-    for(let value of data.categoryValues){
+    for (let value of data.categoryValues) {
         totalScore += value;
     }
     document.getElementById("myRange").value = totalScore / 4;
 
-    if(data.topSet == false){
-        document.getElementById('myRange').addEventListener('change', function(){updateBottomSliders()})
-        data.topSet = true;
-    }
 }
 
 function openPopup(category, score) {
