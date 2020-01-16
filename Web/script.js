@@ -11,7 +11,7 @@ $("document").ready(function () {
 //version 2
 
 function makeSliders() {
-    let circleNumber = 0;
+    
 
     let circles = document.getElementsByClassName('pie-wrapper');
     let isDraggingArray = [];
@@ -48,6 +48,8 @@ function makeSliders() {
                 let info = circles[i].getElementsByClassName('label')[0];
                 info.textContent = Math.ceil(angle / 3.6);
                 console.log(angle)
+                data.categoryValues[i] = Math.ceil(angle / 3.6);
+                setTopBar()
             }
         })
     }
@@ -249,6 +251,7 @@ function inflateCity(city) {
     let totalScore = 0;
     let categoryBlockContainer = document.getElementsByClassName("charts-container")[0];
     let categoryCounter = 1;
+    data.categoryValues = [];
     for (const category of city.categories) {
         //Make the block
         let categoryDiv = document.createElement('div');
@@ -302,11 +305,21 @@ function inflateCity(city) {
         totalScore += categoryScore;
         categoryBlockContainer.appendChild(categoryDiv);
         categoryCounter++;
+        data.categoryValues.push(categoryScore);
     }
 
     let finalScore = totalScore / 4;
-    document.getElementById("myRange").value = finalScore;
+    data.totalScore = finalScore;
+    setTopBar();
 
+}
+
+function setTopBar(){
+    let totalScore = 0;
+    for(let value of data.categoryValues){
+        totalScore += value;
+    }
+    document.getElementById("myRange").value = totalScore / 4;
 }
 
 function openPopup(category, score) {
