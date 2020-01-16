@@ -20,7 +20,10 @@
       <h2>HOW CAN AMSTERDAM BE 100% BICYCLE FRIENDLY?</h2>
     </div>
     <div ng-controller="DemoCtrl">
+      <form>
         <input id="myRange" type="range" min="1" max="100" value="74" class="slider" name ="rangeslider">
+        <output for="rangslider" onforminput="value = rangeslider.valueAsNumber;"></output>
+      </form>
         <div class="charts-container"></div>
       </div>
 

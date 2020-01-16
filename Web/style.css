@@ -196,9 +196,14 @@ border-radius: 50%;
 }
 
 /*new bar slider */
+form {
+  position: relative;
+  margin: 15px;
+  margin-top: 40px;
+}
 input[type="range"] {
     margin: auto;
-    margin-left: 3rem;
+    margin-left: 1rem;
     -webkit-appearance: none;
     position: relative;
     overflow: hidden;
@@ -206,12 +211,10 @@ input[type="range"] {
     width: 100%;
     cursor: pointer;
 
-
 }
 
 ::-webkit-slider-runnable-track {
     background: #FFE412;
-
 }
 
 /*
@@ -221,13 +224,31 @@ input[type="range"] {
     -webkit-appearance: none;
     width: 2px; /* 1 */
     height: 25px;
-    background: black;
     box-shadow: -100vw 0 0 100vw #5DBB46;
-
-     /* 1 */
-
 }
 
+output {
+
+  position: absolute;
+  text-align: center;
+  color: black;
+  font: bold Georgia;
+  bottom: 140%;
+  padding-bottom: 10px;
+  padding-right: 50px;
+}
+output:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 20px solid black;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  top: 100%;
+  left: 0%;
+  margin-top: -10px;
+}
 /*slide bar */
 sidebar
 {
