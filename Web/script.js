@@ -5,7 +5,6 @@ data.topSet = false;
 
 $("document").ready(function () {
     $(".slider").rangeslider();
-
 });
 
 //version 2
@@ -624,7 +623,6 @@ function openPopup(category, score) {
     }
 
 
-
     let description = document.createElement('h5');
     description.appendChild(document.createTextNode('DESCRIPTION'));
     let descriptionText = document.createElement('p');
@@ -640,6 +638,8 @@ function openPopup(category, score) {
     let opportunityText = document.createElement('p');
     opportunityText.innerText = category.opportunity;
 
+    let action = document.createElement('div');
+    action.classList.add('action');
     let steps = document.createElement('h5');
     steps.appendChild(document.createTextNode('STEPS'));
     let stepList = document.createElement('ul');
@@ -660,8 +660,9 @@ function openPopup(category, score) {
     report.appendChild(opportunity);
     report.appendChild(opportunityText);
 
-    report.appendChild(steps);
-    report.appendChild(stepList);
+    report.appendChild(action);
+    action.appendChild(steps);
+    action.appendChild(stepList);
 
     myPopup.appendChild(title);
     myPopup.appendChild(report);
