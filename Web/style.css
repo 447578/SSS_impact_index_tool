@@ -108,7 +108,7 @@ padding-left: 30px;
   position: relative;
 	width: 10rem;
 	height: 10rem;
-	background: conic-gradient(from 0deg, #FFE412, #5DBB46);
+	background: conic-gradient(from 0deg, #00A2D3, #5DBB46);
 	border-radius: 50%;
 }
 .pie-2 {
@@ -148,7 +148,7 @@ border-radius: 50%;
 	top: 52%;
 	left: 52%;
 	transform: translate(-50%,-50%);
-	background-color: whitesmoke;
+	background-color: #ececec;
 	border-radius: 50%;
 	width: 8rem;
 	height: 8rem;
@@ -289,11 +289,11 @@ button {
 
 
 .popup-content{
-  width: 900px;
-  height: 700px;
+  width: 70%;
+  height: 90vh;
   background-color: white;
   top: -700px;
-  margin: 10px 20px 0px 300px ;
+  margin: 0 auto ;
   z-index: 5;
   position: relative;
   overflow: hidden;
