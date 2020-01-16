@@ -386,7 +386,7 @@ function openPopup(category, score) {
     categoryScore.innerText = roundedScore;
     let tinyScore = document.createElement('span');
     tinyScore.classList.add('tiny');
-    tinyScore.innerText = '/100';
+    tinyScore.innerText = '/100';    
 
     categoryScore.appendChild(tinyScore);
     title.appendChild(titleText);
@@ -431,6 +431,15 @@ function openPopup(category, score) {
     let opportunityText = document.createElement('p');
     opportunityText.innerText = category.opportunity;
 
+    let steps = document.createElement('h5');
+    steps.appendChild(document.createTextNode('STEPS'));
+    let stepList = document.createElement('li');
+    for(let step of category.steps){
+        let stepText = document.createElement('A');
+        stepText.innerText = step;
+        stepList.appendChild(stepText);
+    }
+
     report.appendChild(smallSlider);
 
     report.appendChild(description);
@@ -441,6 +450,9 @@ function openPopup(category, score) {
 
     report.appendChild(opportunity);
     report.appendChild(opportunityText);
+
+    report.appendChild(steps);
+    report.appendChild(stepList);
 
     myPopup.appendChild(title);
     myPopup.appendChild(report);
