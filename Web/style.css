@@ -45,6 +45,7 @@ header h1 {
   margin: 15px 30px;
 }
 .charts-container {
+  width: 100%;
   display: grid;
   grid-template-columns: auto auto;
     justify-content: center;
@@ -53,6 +54,7 @@ header h1 {
   font-family: 'Lato', Tahoma, Geneva, sans-serif;
     font-size: 12em;
 padding-left: 30px;
+
 }
 .charts-container:after {
   clear: both;
