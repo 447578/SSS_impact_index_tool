@@ -294,7 +294,7 @@ function getAllCities() {
         citylist.insertBefore(singleCityNode, citylist.childNodes[2]);
     }
     inflateCity(data.cities[0])
-    
+
 }
 // Active class
 /*
@@ -460,9 +460,9 @@ function openPopup(category, score) {
 
     let steps = document.createElement('h5');
     steps.appendChild(document.createTextNode('STEPS'));
-    let stepList = document.createElement('li');
+    let stepList = document.createElement('ul');
     for (let step of category.steps) {
-        let stepText = document.createElement('A');
+        let stepText = document.createElement('li');
         stepText.innerText = step;
         stepList.appendChild(stepText);
     }
