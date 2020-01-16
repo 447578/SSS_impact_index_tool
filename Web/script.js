@@ -272,7 +272,22 @@ function getAllCities() {
                     "steps": ["Cycle together with others", "Provide dry bicycle parking in the city", "X-Fittt 2.0 initiative, low SES person guidance"]
                 }
                 ]
-            }
+            }, {"name": "Nairobi",
+            "categories":""}, {"name": "Jakarta",
+            "categories":""}, {"name": "Bogota",
+            "categories":""}, {"name": "Manilla",
+            "categories":""}, {"name": "Accra",
+            "categories":""}, {"name": "Mumbai",
+            "categories":""}, {"name": "Lagos",
+            "categories":""}, {"name": "Dakar",
+            "categories":""}, {"name": "Kampala",
+            "categories":""}, {"name": "Pretoria",
+            "categories":""}, {"name": "Delhi",
+            "categories":""}, {"name": "Saigon",
+            "categories":""}, {"name": "Bangkok",
+            "categories":""}, {"name": "Dhaka",
+            "categories":""}, {"name": "Cairo",
+            "categories":""}
         ]
     }
 

@@ -312,7 +312,7 @@ button {
     text-align: left;
 }
 
-
+/*popup */
 .popup-content{
   width: 70%;
   height: 90vh;
@@ -321,7 +321,7 @@ button {
   margin: 0 auto ;
   z-index: 5;
   position: relative;
-  overflow: hidden;
+  overflow-y: scroll;
   box-shadow: 2px 4px 18px #888888;
   visibility: hidden;
 }
@@ -353,15 +353,18 @@ margin-left: 200px;}
 }
 .report {
   width: 100%;
+  column-fill: auto;
   column-count: 2;
   column-width: 50%;
   column-gap: 40px;
+  column-fill: auto;
+
   margin: 15px;
   padding: 15px;
   font-size: 15px;
-
-
+  overflow-y: scroll;
 }
+
 .report h5{
   font-size: 15px;
   text-align: left;
@@ -373,6 +376,8 @@ margin-left: 200px;}
   margin-right: 30px;
   text-align: justify;
   line-height: 15px;
+  font-family: 'Roboto';
+  font-weight: light;
 }
 .smallSlider {
   padding-bottom: 10px;
