@@ -73,6 +73,8 @@ padding-left: 30px;
     display: inline-block;
     overflow: hidden;
     position: relative;
+    width: 35vw;
+
 }
 
 .square h2 {
@@ -262,6 +264,7 @@ sidebar
     text-align: left;
     z-index: 3;
     margin: 0;
+    cursor: default;
 
 }
 ul {
@@ -327,7 +330,6 @@ button {
   z-index: 5;
   position: relative;
   overflow-x:hidden;
-  overflow-y: scroll;
   box-shadow: 2px 4px 18px #888888;
   visibility: hidden;
 }
@@ -367,7 +369,7 @@ margin-left: 200px;}
   padding: 15px;
   font-size: 15px;
   overflow-y: scroll;
-  
+
 }
 
 
