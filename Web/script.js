@@ -109,22 +109,6 @@ function modifyTopbarInputs() {
 
 modifyTopbarInputs();
 
-
-
-//Active class
-var header = document.getElementById("myList");
-var btns = header.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function () {
-        var current = document.getElementsByClassName("active");
-        if (current.length > 0) {
-            current[0].className = current[0].className.replace(" active", "");
-        }
-        this.className += " active";
-    });
-}
-
-
 function ajax(method, path, callback) {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -425,6 +409,22 @@ function getAllCities() {
                 }
                 ]
             }
+            }, {"name": "Nairobi",
+            "categories":""}, {"name": "Jakarta",
+            "categories":""}, {"name": "Bogota",
+            "categories":""}, {"name": "Manilla",
+            "categories":""}, {"name": "Accra",
+            "categories":""}, {"name": "Mumbai",
+            "categories":""}, {"name": "Lagos",
+            "categories":""}, {"name": "Dakar",
+            "categories":""}, {"name": "Kampala",
+            "categories":""}, {"name": "Pretoria",
+            "categories":""}, {"name": "Delhi",
+            "categories":""}, {"name": "Saigon",
+            "categories":""}, {"name": "Bangkok",
+            "categories":""}, {"name": "Dhaka",
+            "categories":""}, {"name": "Cairo",
+            "categories":""}
         ]
     }
 
@@ -445,8 +445,23 @@ function getAllCities() {
         
     }
     inflateCity(data.cities[0])
+    
 }
-
+// Active class
+/*
+function activeBar() {
+var header = document.getElementById("myList");
+var btns = header.getElementsByClassName("BTN");
+for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+        var current = document.getElementsByClassName("active");
+        if (current.length > 0) {
+            current[0].className = current[0].className.replace(" active", "");
+        }
+        this.className += "active";
+    });
+}
+}  */
 
 function inflateCity(city) {
     fullReset();
@@ -508,8 +523,6 @@ function inflateCity(city) {
 
         categoryDiv.appendChild(name);
         categoryDiv.appendChild(pieWrapper);
-
-
 
         totalScore += categoryScore;
         categoryBlockContainer.appendChild(categoryDiv);
