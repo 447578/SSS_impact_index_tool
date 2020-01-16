@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Oswald:700|Roboto:300&display=swap');
+*,
+*:before,
+*:after
+{
+  box-sizing: border-box;
+}
+body {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+#overlay {
+      background-color: rgba(0,0,0,0.5);
+      position:fixed;
+      left:0;
+      top: 0;
+      width:100%;
+      height:100%;
+      z-index: 5;
+      visibility: hidden;
+    }
+
+article {
+    width: 100vw;
+    float:right;
+    padding-left:200px;
+    padding-right: 100px;
+    overflow: hidden;
+}
+header
+{
+    background-color: #272727;
+    width: 100%;
+    padding-left: 220px;
+    float:right;
+    display: flex;
+    color: whitesmoke;
+    font-family: 'Oswald';
+    font-size: 0.5em;
+    position: fixed;
+    z-index: 2;
+}
+header h1 {
+  margin: 15px 30px;
+}
+.charts-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto;
+    justify-content: center;
+ margin: auto;
+  color: #444;
+  font-family: 'Lato', Tahoma, Geneva, sans-serif;
+    font-size: 12em;
+padding-left: 30px;
+
+}
+.charts-container:after {
+  clear: both;
+  content: '';
+  display: table;
+
+}
+.square {
+    box-shadow: 2px 4px 18px #888888;
+    background-image: url("images/skyline.png");
+    background-color: #ececec;
+    background-size: contain;
+    background-position: center bottom;;
+    background-repeat: no-repeat;
+    margin: 30px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    width: 35vw;
+
+}
+
+.square h2 {
+  font-size: 25px;
+  text-align: left;
+  width: 60%;
+  vertical-align: middle;
+  text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+  padding: 60px 0px;
+  margin-left: 15px;
+  overflow: hidden;
+  color: black;
+  position: absolute;
+}
+.square h2:hover {
+  text-shadow: 2px 4px 8px #888888;
+  cursor: pointer;
+}
+/*pie charts */
+.pie-wrapper {
+  height: 0.8em;
+  width: 0.8em;
+  float: right;
+  margin: 30px 30px 30px 320px;
+  position: relative;
+
+}
+.pie-wrapper:nth-child(3n + 1) {
+  clear: both;
+}
+
+
+.pie-1 {
+  position: relative;
+	width: 10rem;
+	height: 10rem;
+	background: conic-gradient(from 0deg, #00A2D3, #5DBB46);
+	border-radius: 50%;
+}
+.pie-2 {
+  position: relative;
+	width: 10rem;
+	height: 10rem;
+	background: conic-gradient(from 0deg, #B94FD3, #5DBB46);
+	border-radius: 50%;
+}
+.pie-3 {
+position: relative;
+width: 10rem;
+height: 10rem;
+background: conic-gradient(from 0deg, #FD4F00, #5DBB46);
+border-radius: 50%;
+}
+.pie-4 {
+position: relative;
+width: 10rem;
+height: 10rem;
+background: conic-gradient(from 0deg, #FFE412, #5DBB46);
+border-radius: 50%;
+}
+
+
+.pie-wrapper .label .smaller {
+  color: black;
+  font-size: .45em;
+  padding-bottom: 20px;
+
+}
+
+
+/*new pie chart*/
+.pie-wrapper .label {
+	position: absolute;
+	top: 52%;
+	left: 52%;
+	transform: translate(-50%,-50%);
+	background-color: #ececec;
+	border-radius: 50%;
+	width: 8rem;
+	height: 8rem;
+	text-align: center;
+	color: black;
+	font-family: 'Oswald', serif;
+	font-size: 2.5rem;
+	font-weight: bold;
+	line-height: 8rem;
+	user-select: none;
+}
+
+.pie-wrapper .circleslider {
+	position: absolute;
+	width: 20%;
+	height: 62%;
+	left: 42%;
+	transform-origin: center bottom;
+	border-left: 15px solid transparent;
+   border-right: 15px solid transparent;
+   border-top: 15px solid black;
+	margin-top: -175px;
+
+}
+
+.pie-wrapper .circleslider::before {
+	content: '';
+	position: absolute;
+	background-color: black;
+	width: 0.15rem;
+	height: 1rem;
+	transform: translate(0%, 0%);
+	cursor: pointer;
+}
+
+
+
+/* bar slider */
+
+.slider {
+  text-align: center;
+  height: 22px;
+}
+
+/*new bar slider */
+form {
+  position: relative;
+  margin: 40px 15px 15px 30px;
+}
+input[type="range"] {
+    margin: auto;
+    margin-left: 1rem;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    height: 20px;
+    width: 100%;
+    cursor: pointer;
+}
+
+::-webkit-slider-runnable-track {
+    background: #FFE412;
+}
+
+/*
+ * 1. Set to 0 width and remove border for a slider without a thumb
+ */
+::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 2px; /* 1 */
+    height: 25px;
+    box-shadow: -100vw 0 0 100vw #5DBB46;
+}
+
+output {
+  position: absolute;
+  text-align: center;
+  color: black;
+  font-family: 'Oswald';
+  font-size: 1em;
+  bottom: 140%;
+  padding-bottom: 10px;
+  padding-right: 50px;
+
+
+}
+output:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 20px solid black;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  top: 100%;
+  left: 0%;
+  margin-top: -10px;
+}
+/*slide bar */
+sidebar
+{
+    background-color: black;
+    float: left;
+    height:100%;
+    color: whitesmoke;
+    position: fixed;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    text-align: left;
+    z-index: 3;
+    margin: 0;
+    cursor: default;
+
+}
+ul {
+    margin:0;
+    padding: 0;
+
+}
+
+li {
+      margin:0;
+      padding: 0;
+}
+sidebar li a{
+    color: whitesmoke;
+    text-decoration: none;
+    display: block;
+    padding: 8px 16px;
+}
+
+.active, .btn:hover, button:hover, .active a, a:hover   {
+    color: #000;
+    background-color: #ffe412;
+}
+
+sidebar img{
+  width: 150px;
+  height: auto;
+}
+#myList {
+  margin-right: 0;
+}
+.see-more {
+    background-color: black;
+    color: whitesmoke;
+    display: flex;
+
+}
+button {
+    background-color: black;
+    color: whitesmoke;
+    border: 2px solid whitesmoke;
+    padding: 10px 20px 10px 16px;
+    font-family: 'roboto', sans-serif;
+    font-size:18px;
+    text-align: left;
+}
+
+.title {
+    width: 90vw;
+    font-family: 'Oswald';
+    font-size: 1em;
+    padding: 50px 0px 0px 50px;
+    text-align: left;
+}
+
+/*popup */
+.popup-content{
+  width: 70%;
+  height: 90vh;
+  background-color: white;
+  top: -700px;
+  margin: 0 auto ;
+  z-index: 5;
+  position: relative;
+  overflow-x:hidden;
+  box-shadow: 2px 4px 18px #888888;
+  visibility: hidden;
+}
+.popup-title  {
+  width: 100%;
+  padding: 20px 20px;
+  background-image: url("images/skyline-flipped.png");
+  background-color: #ececec;
+  background-size: 350px;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  border-bottom: 2px solid grey;
+  text-align: center;
+
+}
+.popup-title h3, h4{
+display: inline;
+font-family: 'Oswald';
+text-transform: uppercase;
+font-size: 1.5em;
+margin-left: 200px;}
+
+.popup-title h4 {
+ float: right;
+ margin: 0px 80px;
+}
+.tiny {
+  font-size: 0.5em;
+}
+.report {
+  width: 100%;
+  column-fill: auto;
+  column-count: 2;
+  column-width: 50%;
+  column-gap: 40px;
+  margin: 15px;
+  padding: 15px;
+  font-size: 15px;
+  overflow-y: scroll;
+
+}
+
+
+.report h5{
+  font-size: 15px;
+  text-align: left;
+  font-family: 'Oswald';
+  text-transform: uppercase;
+  line-height: 0px;
+
+}
+.report p, ul{
+  margin-right: 30px;
+  text-align: justify;
+  line-height: 20px;
+  font-family: 'Roboto';
+  font-weight: light;
+}
+
+.report ul li{
+  margin-left: 30px;
+}
+.smallSlider {
+  padding-bottom: 10px;
+}
+.smallSlider h4{
+  width: 100%;
+  font-size: 15px;
+  font-family: 'Oswald', sans-serif;
+  text-align: right;
+  margin-left: 0px;
+  line-height: 60px;
+}
+.action {
+  background-color: lightgrey;
+  margin-right: 30px;
+  padding-bottom: 20px;
+}
+.action h5 {
+  text-align: center;
+  padding-top: 25px;
+  line-height: 0px;
+
+}
+.action ul {
+  line-height: 30px;
+  text-align: center;
+}
+#progressBar {
+  width: 90%;
+  height: 15px;
+  background-color: lightgrey;
+}
+#progressBar div {
+  height: 15px;
+  text-align: right;
+  background-color: #B94FD3;
+  box-sizing: border-box;
+}
