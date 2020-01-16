@@ -11,7 +11,7 @@ $("document").ready(function () {
 //version 2
 
 function makeSliders() {
-    
+
 
     let circles = document.getElementsByClassName('pie-wrapper');
     let isDraggingArray = [];
@@ -25,7 +25,7 @@ function makeSliders() {
         circles[i].addEventListener('mousedown', () => { isDraggingArray[i] = true });
         circles[i].addEventListener('mouseup', () => { isDraggingArray[i] = false });
         circles[i].addEventListener('mousemove', e => {
-            
+
 
             const box = circles[i].getBoundingClientRect()
             const { atan2, PI, round } = Math
@@ -63,7 +63,7 @@ $.fn.rangeslider = function (options) {
     makeSliders();
 };
 //bubble
-function modifyOffset() {
+function modifyBubble() {
 	var el, newPoint, newPlace, offset, siblings, k;
 	width    = this.offsetWidth;
 	newPoint = (this.value - this.getAttribute("min")) / (this.getAttribute("max") - this.getAttribute("min"));
@@ -83,14 +83,14 @@ function modifyOffset() {
 	outputTag.innerHTML= this.value + '%';
 }
 
-function modifyInputs() {
+function modifyTopbarInputs() {
 
 	var inputs = document.getElementsByTagName("input");
 	for (var i = 0; i < inputs.length; i++) {
 		if (inputs[i].getAttribute("type") == "range") {
-			inputs[i].onchange = modifyOffset;
+			inputs[i].onchange = modifyBubble;
 
-			// the following taken from http://stackoverflow.com/questions/2856513/trigger-onchange-event-manually
+			//http://stackoverflow.com/questions/2856513/trigger-onchange-event-manually
 			if ("fireEvent" in inputs[i]) {
 			    inputs[i].fireEvent("onchange");
 			} else {
@@ -102,7 +102,7 @@ function modifyInputs() {
 	}
 }
 
-modifyInputs();
+modifyTopbarInputs();
 
 
 
@@ -363,6 +363,8 @@ function setTopBar(){
         totalScore += value;
     }
     document.getElementById("myRange").value = totalScore / 4;
+    modifyTopbarInputs();
+    modifyBubble();
 
     if(data.topSet == false){
         document.getElementById('myRange').addEventListener('change', function(){updateBottomSliders()})
