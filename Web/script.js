@@ -1,7 +1,7 @@
 var app = angular.module('demo', ['angular-progress-arc']);
 
 let data = {};
-
+data.topSet = false;
 
 $("document").ready(function () {
     $(".slider").rangeslider();
@@ -16,12 +16,16 @@ function makeSliders() {
     let circles = document.getElementsByClassName('pie-wrapper');
     let isDraggingArray = [];
     for (let i = 0; i < circles.length; i++) {
+        let score = data.categoryValues[i];
+        let slider = document.getElementsByClassName('circleslider')[i];
+
+        slider.style.transform = `rotate(${ score *3.6 }deg)`;
         isDraggingArray.push('false');
 
         circles[i].addEventListener('mousedown', () => { isDraggingArray[i] = true });
         circles[i].addEventListener('mouseup', () => { isDraggingArray[i] = false });
         circles[i].addEventListener('mousemove', e => {
-            let slider = document.getElementsByClassName('circleslider')[i];
+            
 
             const box = circles[i].getBoundingClientRect()
             const { atan2, PI, round } = Math
@@ -47,7 +51,6 @@ function makeSliders() {
                 slider.style.transform = `rotate(${angle}deg)`;
                 let info = circles[i].getElementsByClassName('label')[0];
                 info.textContent = Math.ceil(angle / 3.6);
-                console.log(angle)
                 data.categoryValues[i] = Math.ceil(angle / 3.6);
                 setTopBar()
             }
@@ -320,6 +323,11 @@ function setTopBar(){
         totalScore += value;
     }
     document.getElementById("myRange").value = totalScore / 4;
+
+    if(data.topSet == false){
+        document.getElementById('myRange').addEventListener('change', function(){updateBottomSliders()})
+        data.topSet = true;
+    }
 }
 
 function openPopup(category, score) {
