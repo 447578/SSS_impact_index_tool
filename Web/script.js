@@ -12,14 +12,16 @@ $("document").ready(function () {
 
 function makeSliders() {
 
-
+    let smaller = document.createElement('span');
+    smaller.classList.add('smaller');
+    smaller.innerText = "/100";
     let circles = document.getElementsByClassName('pie-wrapper');
     let isDraggingArray = [];
     for (let i = 0; i < circles.length; i++) {
         let score = data.categoryValues[i];
         let slider = document.getElementsByClassName('circleslider')[i];
 
-        slider.style.transform = `rotate(${ score *3.6 }deg)`;
+        slider.style.transform = `rotate(${score * 3.6}deg)`;
         isDraggingArray.push('false');
 
         circles[i].addEventListener('mousedown', () => { isDraggingArray[i] = true });
@@ -50,7 +52,10 @@ function makeSliders() {
                 angle = round(angle)
                 slider.style.transform = `rotate(${angle}deg)`;
                 let info = circles[i].getElementsByClassName('label')[0];
+
+
                 info.textContent = Math.ceil(angle / 3.6);
+                info.appendChild(smaller)
                 data.categoryValues[i] = Math.ceil(angle / 3.6);
                 setTopBar()
             }
@@ -64,42 +69,42 @@ $.fn.rangeslider = function (options) {
 };
 //bubble
 function modifyBubble() {
-	var el, newPoint, newPlace, offset, siblings, k;
-	width    = this.offsetWidth;
-	newPoint = (this.value - this.getAttribute("min")) / (this.getAttribute("max") - this.getAttribute("min"));
-	offset   = -1;
-	if (newPoint < 0) { newPlace = 0;  }
-	else if (newPoint > 1) { newPlace = width; }
-	else { newPlace = width * newPoint + offset; offset -= newPoint;}
-	siblings = this.parentNode.childNodes;
-	for (var i = 0; i < siblings.length; i++) {
-		sibling = siblings[i];
-		if (sibling.id == this.id) { k = true; }
-		if ((k == true) && (sibling.nodeName == "OUTPUT")) {
-			outputTag = sibling;
-		}
-	}
-	outputTag.style.left= newPlace + "px";
-	outputTag.innerHTML= this.value + '%';
+    var el, newPoint, newPlace, offset, siblings, k;
+    width = this.offsetWidth;
+    newPoint = (this.value - this.getAttribute("min")) / (this.getAttribute("max") - this.getAttribute("min"));
+    offset = -1;
+    if (newPoint < 0) { newPlace = 0; }
+    else if (newPoint > 1) { newPlace = width; }
+    else { newPlace = width * newPoint + offset; offset -= newPoint; }
+    siblings = this.parentNode.childNodes;
+    for (var i = 0; i < siblings.length; i++) {
+        sibling = siblings[i];
+        if (sibling.id == this.id) { k = true; }
+        if ((k == true) && (sibling.nodeName == "OUTPUT")) {
+            outputTag = sibling;
+        }
+    }
+    outputTag.style.left = newPlace + "px";
+    outputTag.innerHTML = this.value + '%';
 }
 
 function modifyTopbarInputs() {
 
-	var inputs = document.getElementsByTagName("input");
-	for (var i = 0; i < inputs.length; i++) {
-		if (inputs[i].getAttribute("type") == "range") {
-			inputs[i].onchange = modifyBubble;
+    var inputs = document.getElementsByTagName("input");
+    for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].getAttribute("type") == "range") {
+            inputs[i].onchange = modifyBubble;
 
-			//http://stackoverflow.com/questions/2856513/trigger-onchange-event-manually
-			if ("fireEvent" in inputs[i]) {
-			    inputs[i].fireEvent("onchange");
-			} else {
-			    var evt = document.createEvent("HTMLEvents");
-			    evt.initEvent("change", false, true);
-			    inputs[i].dispatchEvent(evt);
-			}
-		}
-	}
+            //http://stackoverflow.com/questions/2856513/trigger-onchange-event-manually
+            if ("fireEvent" in inputs[i]) {
+                inputs[i].fireEvent("onchange");
+            } else {
+                var evt = document.createEvent("HTMLEvents");
+                evt.initEvent("change", false, true);
+                inputs[i].dispatchEvent(evt);
+            }
+        }
+    }
 }
 
 modifyTopbarInputs();
@@ -357,17 +362,17 @@ function inflateCity(city) {
 
 }
 
-function setTopBar(){
+function setTopBar() {
     let totalScore = 0;
-    for(let value of data.categoryValues){
+    for (let value of data.categoryValues) {
         totalScore += value;
     }
     document.getElementById("myRange").value = totalScore / 4;
     modifyTopbarInputs();
     modifyBubble();
 
-    if(data.topSet == false){
-        document.getElementById('myRange').addEventListener('change', function(){updateBottomSliders()})
+    if (data.topSet == false) {
+        document.getElementById('myRange').addEventListener('change', function () { updateBottomSliders() })
         data.topSet = true;
     }
 }
@@ -386,7 +391,7 @@ function openPopup(category, score) {
     categoryScore.innerText = roundedScore;
     let tinyScore = document.createElement('span');
     tinyScore.classList.add('tiny');
-    tinyScore.innerText = '/100';    
+    tinyScore.innerText = '/100';
 
     categoryScore.appendChild(tinyScore);
     title.appendChild(titleText);
@@ -434,7 +439,7 @@ function openPopup(category, score) {
     let steps = document.createElement('h5');
     steps.appendChild(document.createTextNode('STEPS'));
     let stepList = document.createElement('li');
-    for(let step of category.steps){
+    for (let step of category.steps) {
         let stepText = document.createElement('A');
         stepText.innerText = step;
         stepList.appendChild(stepText);
