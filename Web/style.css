@@ -37,12 +37,13 @@ header
     display: flex;
     color: whitesmoke;
     font-family: 'Oswald';
-    font-size: 0.5em;
+    font-size: 0.8em;
     position: fixed;
     z-index: 2;
 }
+
 header h1 {
-  margin: 15px 30px;
+  margin: 20px 20px;
 }
 .charts-container {
   width: 100%;
@@ -78,13 +79,13 @@ padding-left: 30px;
 }
 
 .square h2 {
-  font-size: 25px;
+  font-size: 2rem;
   text-align: left;
   width: 60%;
   vertical-align: middle;
   text-transform: uppercase;
   font-family: 'Oswald', sans-serif;
-  padding: 60px 0px;
+  padding: 70px 0px;
   margin-left: 15px;
   overflow: hidden;
   color: black;
@@ -99,7 +100,7 @@ padding-left: 30px;
   height: 0.8em;
   width: 0.8em;
   float: right;
-  margin: 30px 30px 30px 320px;
+  margin: 50px 50px 50px 320px;
   position: relative;
 
 }
@@ -316,7 +317,7 @@ button {
     width: 90vw;
     font-family: 'Oswald';
     font-size: 1em;
-    padding: 50px 0px 0px 50px;
+    padding: 100px 0px 0px 50px;
     text-align: left;
 }
 
