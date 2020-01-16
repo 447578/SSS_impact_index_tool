@@ -303,6 +303,16 @@ function inflateCity(city) {
     let categoryBlockContainer = document.getElementsByClassName("charts-container")[0];
     let categoryCounter = 1;
     data.categoryValues = [];
+    let header = document.getElementsByClassName('cityheader')[0];
+    let cityTitle = document.createElement('h1');
+    cityTitle.innerText = city.name.toUpperCase();
+    header.appendChild(cityTitle);
+
+    let quote = document.getElementsByClassName('title')[0];
+    let cityQuote = document.createElement('h2');
+    let quoteText = document.createTextNode('HOW CAN ' + city.name.toUpperCase() + ' BE 100% BICYCLE FRIENDLY?');
+    cityQuote.appendChild(quoteText);
+    quote.appendChild(cityQuote);
     for (const category of city.categories) {
         //Make the block
         let categoryDiv = document.createElement('div');
