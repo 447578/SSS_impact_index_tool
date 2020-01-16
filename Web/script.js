@@ -3,11 +3,18 @@ var app = angular.module('demo', ['angular-progress-arc']);
 let data = {};
 data.topSet = false;
 
-$("document").ready(function () {
-    $(".slider").rangeslider();
+function doWeirdThuShit() {
+    $("document").ready(function () {
+        $(".slider").rangeslider();
 
-});
+    });
+    $.fn.rangeslider = function (options) {
 
+        makeSliders();
+    };
+
+}
+doWeirdThuShit();
 //version 2
 
 function makeSliders() {
@@ -63,10 +70,7 @@ function makeSliders() {
     }
 }
 
-$.fn.rangeslider = function (options) {
 
-    makeSliders();
-};
 //bubble
 function modifyBubble() {
     var el, newPoint, newPlace, offset, siblings, k;
@@ -469,7 +473,7 @@ function getAllCities() {
         singleCityA.innerText = data.cities[i].name;
 
         singleCityNode.appendChild(singleCityA);
-        singleCityNode.addEventListener('click', function () { inflateCity(data.cities[i]) });
+        singleCityNode.addEventListener('click', function () { updateCity(data.cities[i]) });
         citylist.appendChild(singleCityNode);
         citylist.insertBefore(singleCityNode, citylist.childNodes[2]);
 
@@ -494,7 +498,6 @@ for (var i = 0; i < btns.length; i++) {
 }  */
 
 function inflateCity(city) {
-    fullReset();
     let totalScore = 0;
     let categoryBlockContainer = document.getElementsByClassName("charts-container")[0];
     let categoryCounter = 1;
@@ -541,7 +544,7 @@ function inflateCity(city) {
         for (const item of category.items) {
             categoryScore += item.score;
         }
-        let oneDecimalCategoryScore = Math.round(categoryScore);
+        let oneDecimalCategoryScore = Math.round(categoryScore / category.items.length * 10);
 
         label.innerText = oneDecimalCategoryScore;
 
@@ -557,12 +560,13 @@ function inflateCity(city) {
         totalScore += categoryScore;
         categoryBlockContainer.appendChild(categoryDiv);
         categoryCounter++;
-        data.categoryValues.push(categoryScore);
+        data.categoryValues.push(oneDecimalCategoryScore);
     }
 
-    let finalScore = totalScore / 4;
+    let finalScore = totalScore / city.categories.length;
     data.totalScore = finalScore;
     setTopBar();
+
 
 }
 
@@ -670,16 +674,63 @@ function openPopup(category, score) {
     overlay.style.visibility = "visible";
 }
 
-function fullReset() {
-    let chartsContainer = document.getElementsByClassName('charts-container')[0];
-    while (chartsContainer.hasChildNodes()) {
-        chartsContainer.removeChild(chartsContainer.firstChild);
-    }
+function updateCity(city) {
+    let totalScore = 0;
+    data.categoryValues = [];
+
     let header = document.getElementsByClassName('cityheader')[0];
-    header.removeChild(header.firstChild);
-    let title = document.getElementsByClassName('title')[0];
-    title.removeChild(title.firstChild);
+    header.childNodes[1].textContent = city.name.toUpperCase();
+
+
+    let quote = document.getElementsByClassName('title')[0];
+    quote.childNodes[1].textContent = 'HOW CAN ' + city.name.toUpperCase() + ' BE 100% BICYCLE FRIENDLY?';
+
+    let categoryBlocks = document.getElementsByClassName('square');
+    data.categoryValues = [];
+    for (let i = 0; i < city.categories.length; i++) {
+        let categoryScore = 0;
+        categoryBlocks[i].firstChild.innerText = city.categories[i].name;
+
+        let name = categoryBlocks[i].firstChild;
+        let nameClone = name.cloneNode(true);
+        name.parentNode.replaceChild(nameClone, name);
+        
+        categoryBlocks[i].firstChild.addEventListener('click', function () { openPopup(city.categories[i], categoryScore) });
+        
+        
+        for (const item of city.categories[i].items) {
+            categoryScore += item.score;
+        }
+        let oneDecimalCategoryScore = Math.round(categoryScore/ city.categories[i].items.length * 10);
+
+        let label = document.getElementsByClassName('label')[i];
+        label.innerText = oneDecimalCategoryScore;
+
+        let smaller = document.createElement('span');
+        smaller.classList.add('smaller');
+        smaller.innerText = "/100";
+        label.appendChild(smaller);
+
+        categoryBlocks[i].firstChild.firstChild.innerText = city.categories[i];
+
+        totalScore += categoryScore;
+        data.categoryValues.push(oneDecimalCategoryScore);
+        let circleSlider = categoryBlocks[i].getElementsByClassName('circleslider')[0];
+        circleSlider.style.transform = `rotate(${oneDecimalCategoryScore * 3.6}deg)`
+    }
+    let finalScore = totalScore / city.categories.length;
+
+    data.totalScore = finalScore;
+    
+    setTopBar();
+    makeSliders();
 }
+
+
+function setSliders() {
+
+}
+
 
 function closePopup() {
     const popup = document.getElementById('myPopup');
