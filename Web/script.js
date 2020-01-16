@@ -409,22 +409,52 @@ function getAllCities() {
                 }
                 ]
             }
-            }, {"name": "Nairobi",
-            "categories":""}, {"name": "Jakarta",
-            "categories":""}, {"name": "Bogota",
-            "categories":""}, {"name": "Manilla",
-            "categories":""}, {"name": "Accra",
-            "categories":""}, {"name": "Mumbai",
-            "categories":""}, {"name": "Lagos",
-            "categories":""}, {"name": "Dakar",
-            "categories":""}, {"name": "Kampala",
-            "categories":""}, {"name": "Pretoria",
-            "categories":""}, {"name": "Delhi",
-            "categories":""}, {"name": "Saigon",
-            "categories":""}, {"name": "Bangkok",
-            "categories":""}, {"name": "Dhaka",
-            "categories":""}, {"name": "Cairo",
-            "categories":""}
+            , {
+                "name": "Nairobi",
+                "categories": ""
+            }, {
+                "name": "Jakarta",
+                "categories": ""
+            }, {
+                "name": "Bogota",
+                "categories": ""
+            }, {
+                "name": "Manilla",
+                "categories": ""
+            }, {
+                "name": "Accra",
+                "categories": ""
+            }, {
+                "name": "Mumbai",
+                "categories": ""
+            }, {
+                "name": "Lagos",
+                "categories": ""
+            }, {
+                "name": "Dakar",
+                "categories": ""
+            }, {
+                "name": "Kampala",
+                "categories": ""
+            }, {
+                "name": "Pretoria",
+                "categories": ""
+            }, {
+                "name": "Delhi",
+                "categories": ""
+            }, {
+                "name": "Saigon",
+                "categories": ""
+            }, {
+                "name": "Bangkok",
+                "categories": ""
+            }, {
+                "name": "Dhaka",
+                "categories": ""
+            }, {
+                "name": "Cairo",
+                "categories": ""
+            }
         ]
     }
 
@@ -439,13 +469,13 @@ function getAllCities() {
         singleCityA.innerText = data.cities[i].name;
 
         singleCityNode.appendChild(singleCityA);
-        singleCityNode.addEventListener('click', function(){inflateCity(data.cities[i])});
+        singleCityNode.addEventListener('click', function () { inflateCity(data.cities[i]) });
         citylist.appendChild(singleCityNode);
         citylist.insertBefore(singleCityNode, citylist.childNodes[2]);
-        
+
     }
     inflateCity(data.cities[0])
-    
+
 }
 // Active class
 /*
@@ -640,9 +670,9 @@ function openPopup(category, score) {
     overlay.style.visibility = "visible";
 }
 
-function fullReset(){
+function fullReset() {
     let chartsContainer = document.getElementsByClassName('charts-container')[0];
-    while(chartsContainer.hasChildNodes()){
+    while (chartsContainer.hasChildNodes()) {
         chartsContainer.removeChild(chartsContainer.firstChild);
     }
     let header = document.getElementsByClassName('cityheader')[0];
