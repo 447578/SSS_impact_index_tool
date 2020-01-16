@@ -198,8 +198,7 @@ border-radius: 50%;
 /*new bar slider */
 form {
   position: relative;
-  margin: 15px;
-  margin-top: 40px;
+  margin: 40px 15px 15px 30px;
 }
 input[type="range"] {
     margin: auto;
@@ -232,10 +231,13 @@ output {
   position: absolute;
   text-align: center;
   color: black;
-  font: bold Georgia;
+  font-family: 'Oswald';
+  font-size: 1em;
   bottom: 140%;
   padding-bottom: 10px;
   padding-right: 50px;
+
+
 }
 output:after {
   content: "";
