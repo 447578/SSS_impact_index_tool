@@ -5,10 +5,22 @@
 {
   box-sizing: border-box;
 }
+html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
 body {
+  max-height: 100%;
   padding: 0;
   margin: 0;
   overflow: hidden;
+  overflow-y: scroll;
+
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 #overlay {
       background-color: rgba(0,0,0,0.5);
@@ -26,7 +38,7 @@ article {
     float:right;
     padding-left:200px;
     padding-right: 100px;
-    overflow: hidden;
+
 }
 header
 {
@@ -35,9 +47,9 @@ header
     padding-left: 220px;
     float:right;
     display: flex;
-    color: whitesmoke;
+    color: white;
     font-family: 'Oswald';
-    font-size: 0.8em;
+    font-size: 0.6em;
     position: fixed;
     z-index: 2;
 }
@@ -55,6 +67,7 @@ header h1 {
   font-family: 'Lato', Tahoma, Geneva, sans-serif;
     font-size: 12em;
 padding-left: 30px;
+padding-top: 20px;
 
 }
 .charts-container:after {
@@ -326,7 +339,7 @@ button {
   width: 70%;
   height: 90vh;
   background-color: white;
-  top: -700px;
+  top: -850px;
   margin: 0 auto ;
   z-index: 5;
   position: relative;
