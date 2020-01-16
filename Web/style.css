@@ -59,7 +59,6 @@ padding-left: 30px;
 .charts-container:after {
   clear: both;
   content: '';
-  display: table;
 
 }
 .square {
@@ -73,6 +72,7 @@ padding-left: 30px;
     display: inline-block;
     overflow: hidden;
     position: relative;
+    width: 35vw;
 }
 
 .square h2 {
@@ -94,8 +94,7 @@ padding-left: 30px;
 }
 /*pie charts */
 .pie-wrapper {
-  height: 0.8em;
-  width: 0.8em;
+  width: 40vw;
   float: right;
   margin: 30px 30px 30px 320px;
   position: relative;
@@ -112,6 +111,7 @@ padding-left: 30px;
 	height: 10rem;
 	background: conic-gradient(from 0deg, #00A2D3, #5DBB46);
 	border-radius: 50%;
+  float: right;
 }
 .pie-2 {
   position: relative;
@@ -119,6 +119,7 @@ padding-left: 30px;
 	height: 10rem;
 	background: conic-gradient(from 0deg, #B94FD3, #5DBB46);
 	border-radius: 50%;
+  float: right;
 }
 .pie-3 {
 position: relative;
@@ -126,6 +127,7 @@ width: 10rem;
 height: 10rem;
 background: conic-gradient(from 0deg, #FD4F00, #5DBB46);
 border-radius: 50%;
+float: right;
 }
 .pie-4 {
 position: relative;
@@ -133,46 +135,50 @@ width: 10rem;
 height: 10rem;
 background: conic-gradient(from 0deg, #FFE412, #5DBB46);
 border-radius: 50%;
+float: right;
 }
 
 
 .pie-wrapper .label .smaller {
   color: black;
-  font-size: .45em;
+  font-size: 1rem;
   padding-bottom: 20px;
+
+
 
 }
 
 
 /*new pie chart*/
 .pie-wrapper .label {
-	position: absolute;
-	top: 52%;
-	left: 52%;
-	transform: translate(-50%,-50%);
-	background-color: #ececec;
-	border-radius: 50%;
-	width: 8rem;
-	height: 8rem;
-	text-align: center;
-	color: black;
-	font-family: 'Oswald', serif;
-	font-size: 2.5rem;
-	font-weight: bold;
-	line-height: 8rem;
-	user-select: none;
+  position: inherit;
+  width: 8rem;
+  height: 8rem;
+  background: #ececec;
+  border-radius: 50%;
+  float: right;
+  left: 144px;
+  top: 16px;
+  font-size: 3rem;
+  font-family: 'Oswald';
+  line-height: 7rem;
+  text-align: center;
+  color: black;
+
 }
 
 .pie-wrapper .circleslider {
-	position: absolute;
-	width: 20%;
-	height: 62%;
-	left: 42%;
+	position: relative;
+  top: -20px;
+  left: 222px;
+	width: 20px;
+	height: 6rem;
+  float: right;
 	transform-origin: center bottom;
 	border-left: 15px solid transparent;
    border-right: 15px solid transparent;
    border-top: 15px solid black;
-	margin-top: -175px;
+
 
 }
 
@@ -367,7 +373,7 @@ margin-left: 200px;}
   padding: 15px;
   font-size: 15px;
   overflow-y: scroll;
-  
+
 }
 
 
