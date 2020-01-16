@@ -7,11 +7,10 @@ $("document").ready(function () {
     $(".slider").rangeslider();
 });
 
-        makeSliders();
-    };
-
+$.fn.rangeslider = function (options) {
+    makeSliders();
 }
-doWeirdThuShit();
+
 //version 2
 
 function makeSliders() {
@@ -693,14 +692,14 @@ function updateCity(city) {
         let name = categoryBlocks[i].firstChild;
         let nameClone = name.cloneNode(true);
         name.parentNode.replaceChild(nameClone, name);
-        
+
         categoryBlocks[i].firstChild.addEventListener('click', function () { openPopup(city.categories[i], categoryScore) });
-        
-        
+
+
         for (const item of city.categories[i].items) {
             categoryScore += item.score;
         }
-        let oneDecimalCategoryScore = Math.round(categoryScore/ city.categories[i].items.length * 10);
+        let oneDecimalCategoryScore = Math.round(categoryScore / city.categories[i].items.length * 10);
 
         let label = document.getElementsByClassName('label')[i];
         label.innerText = oneDecimalCategoryScore;
@@ -720,7 +719,7 @@ function updateCity(city) {
     let finalScore = totalScore / city.categories.length;
 
     data.totalScore = finalScore;
-    
+
     setTopBar();
     makeSliders();
 }
