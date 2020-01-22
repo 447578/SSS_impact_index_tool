@@ -268,10 +268,9 @@ function getStockCity() {
     data.stockCity = myJasonObject.response;
 
     var citylist = document.getElementById("myList");
-    inflateCity(data.stockCity[0]);
 
+    console.log('1234');
     ajax('get', 'http://localhost:8080/api/cities', function (response) {
-        console.log(response);
         data.cities = response.response;
         for (let i = 0; i < data.cities.length; i++) {
             var singleCityNode = document.createElement("LI");
@@ -285,8 +284,9 @@ function getStockCity() {
             citylist.insertBefore(singleCityNode, citylist.childNodes[2]);
 
         }
+        updateCity(data.cities[0]);
     })
-
+    inflateCity(data.stockCity[0]);
 
 
 }
