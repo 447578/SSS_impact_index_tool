@@ -72,7 +72,7 @@ If it has no cities you may instead add a city to the database using postman by 
 
 Open an insecure chrome window (this is because I cannot get a verified SSL key in time from google and google blocks unverified requests), to do this:
 
- ![](data:image/*;base64,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)
+
 
 Copy pasta:
 
@@ -161,9 +161,9 @@ If it has no cities you may instead add a city to the database using postman by 
 
 Open an insecure chrome window (this is because I cannot get a verified SSL key in time from google and google blocks unverified requests), to do this:
 
-Copy pasta:
-
-chrome.exe --user-data-dir=&quot;C://Chrome dev session&quot; --disable-web-security
+### 1: Open the start menu
+### 2: Type windows + R or open "run"
+### 3: Execute the following command: chrome.exe --user-data-dir=&quot;C://Chrome dev session&quot; --disable-web-security
 
 (The website might work on different browsers without this, untested)
 
@@ -175,4 +175,138 @@ Navigate to your where you stored the github files locally, open the &#39;web&#3
 
 ## Amsterdam JSON:
 
-
+{
+	"name": "Amsterdam",
+	"categories": [ {
+		"name": "Personal Wellbeing",
+		"description": "Personal well-being consists of physiological and psychological factors in humans that influence health or health problems. Examples of acquired determinants are obesity, high blood pressure and ageing. An example of a physical determinant is physical health.",
+		"pitfall": "The GGD did research to personal wellbeing in Amsterdam, 95 % of the citizens admitted that they felt physically healthy. However, research also showed that 48.9% of citizens had a BMI (Body Mass Index) score of 25 or higher. The Netherlands is ageing, the population of age 65+ is growing.",
+		"opportunity": "By making an intervention we want to bring the city to a higher level. To improve mental health, the initiative 'Break the cycle' has been created. By cycling your body will create endorphins and serotonin, a sort of antidepressant without negative side effects. By giving information and workshops about how to life healthy, citizens may become more aware, and adapt a healthier lifestyle and eating behaviour. The municipality can also create water taps, so that citizens can choose between free water or to buy soda. The 'Doortrappen' initiative can be good to motivate and help elderly to cycle better, safer and more.",
+		"items": [
+			{
+				"name": "Physical health",
+				"score": 8.9,
+				"story": "According to the CBS health survey, most Dutch people aged 12 and older feel psychologically healthy: almost 89%. Within the group of young people from 12 to 16 years, even 95% feel psychologically healthy. That is a higher percentage than for all other age groups. Slightly more men than women feel psychologically healthy (91% versus 86%)."
+			},
+			{
+				"name": "Obesity",
+			 	"score": 4.5,
+			 	"story": "The percentage of overweight adults is the lowest in the GGD region of Amsterdam (40.7%). The proportion of overweight adults in the Gooi and Vecht region is also lower than in the rest of the Netherlands (42.9%). The percentage of overweight adults is highest in the GGD regions of Drenthe, Flevoland, South Limburg and Twente. Over 52% of these regions are overweight. This means that these people have a BMI of 25 or higher. In the Netherlands, an average of 48.9% of adults aged 19 years and over is overweight."
+			},
+			{
+				"name": "High blood pressure",
+			 	"score": 8.7,
+			 	"story": "In 2018 there were an estimated 242,300 people diagnosed with heart failure by the general practitioner: 113,300 men and 129,000 women (annual prevalence). This corresponds to 13.2 per 1,000 men and 14.9 per 1,000 women. The age-specific prevalence rates are higher for most age groups for men than for women. However, because there are many older women, there were a total of more women with heart failure in 2018 than men. The annual prevalence concerns all people who were known to the heart failure doctor sometime in the year 2018. These people do not all need to have had contact with the heart failure doctor in 2018."
+			},
+			{
+			 	"name": "Aging",
+			 	"score": 4.7,
+			 	"story": "The population of the Netherlands is gradually ageing. Ageing means that the proportion of older people in the total population is increasing. In the twentieth century, the number of people over 65 in the Netherlands increased more than tenfold: from 0.3 million in 1900 to 3.2 million in 2018. The share of people over 65 in the total population thus increased from 6% to 18%. In addition, there is 'double ageing'. This means that within the over-65s group the proportion of over-80s is increasing. On January 1, 2018, there were more than 779,000 people aged 80 and over, representing 4.5% of the population. Of the over-65s, 24% were older than 80 years."
+			}
+			],
+		"steps": ["Exercise at least 150 minutes per week.", "Give information about healthy living.", "'Doortrappen' initiative to help elderly cycle."]
+	}, 
+	{
+		"name": "Lifestyle and behaviour",
+		"description": "The health determinant lifestyle and behaviour concerns all behaviours that have a positive or negative influence on health and/or the health problem. This concerns eating behaviour, health skills and sport.",
+		"pitfall": "Data about Amsterdam citizens show that their eating behaviour does not meet the health standards. The citizens struggle to eat enough fruit, and a part of them even skip breakfast. Strikingly enough, only 21.9% meet the so-called 'Fitnorm'. The Fitnorm means that a person should be intensively exercising at least three times a week for 20 minutes.",
+		"opportunity": "Opportunities for Amsterdam are mainly to find in improving the health of their citizens by giving health education. By health education, citizens will be informed about healthy eating behaviour and the effect on the human body. During health education, citizens can be motivated to move more so that they can meet the Fitnorm. Amsterdam is already a so-called 'JOGG' municipality, this means that neigbourhoods, schools, companies, city leaders and parents help to make people healthier by movement and sports.",
+		"items": [
+			{
+				"name": "Eating behaviour",
+			 	"score": 5.5,
+			 	"story": "GGD did research amongst Amsterdammers from 19 years and older. People are recommended to eat 250 grams of vegetables on average per day. It turned out that only 36.6% actually eat 250 grams of vegetables per day. GGD did the same research on fruit consumption. Only 45.9% of the people actually eat 200 grams of fruit per day."
+			 },
+			 {
+			 	"name": "Sport",
+			 	"score": 5.6,
+			 	"story": "21.9% of the Amsterdam population meets the so-called 'Fitnorm'. This norm states that a person should do intensive exercise three times a week for at least 20 minutes. A shocking result."
+			 }
+			 ],
+		"steps": ["Adopt a healthier eating behaviour.", "Provide knowledge about the 'Fitnorm' and healthy food.", "Make sport more accessible for everyone."]
+	},
+	{	
+		"name": "Medical care and prevention",
+		"description": "The health determinant medical care & prevention involves all kinds of healthcare facilities.These facilities can be used curatively as well as preventively in the care of health and the prevention or worsening of health problems. This health determinant is also called health care organization.For example, we see a favorable development in the mortality and morbidity of stroke. This is due to both improved care and optimized treatment and a changed lifestyle of people after a stroke. There is also a positive trend for heart diseases and especially for heart attacks, due to improved care and treatment and behavioural changes in people. In diabetes care it is also noticeable that complications occur less because of better treatment in primary care and in outpatient clinics.",
+		"pitfall": "Research showed that the Netherlands scored high on medical care and prevention. They score a 8.8 on the Euro Health Consumer Index 2018. Even-though this is really high, the Netherlands has been higher on the list, they have been on top for a long time up until 2016. This is because there has been an unexpected increase in suicides. Also waiting times for paediatric psychiatry have been increased.",
+		"opportunity": "There are opportunities to improve the coordination between all involved medics and other caretakers in Amsterdam. This can be improved by multidisciplinary cooperation in networks or teams, wherein caretakers of different corporations are involved. To realize this, integral funding of health-care is needed. It is also necessary to improve the skills of all involved caretakers so that they will get a basic knowledge of care, diagnostics and treatment of complex care.",
+		"items": [
+			{
+				"name": "Selfmanagement",
+			 	"score": 8.9,
+			 	"story": "Research about Amsterdam citizens (By: RIVM, ministry) show that 89% of the population has the ability to direct one's own life."
+			 },
+			 {
+			 	"name": "Medical care",
+			 	"score": 8.8,
+			 	"story": "The Netherlands ranks second in Europe, the Euro Health Consumer Index 2018. Scoring 883 out of 1000 it was only just outscored by Switzerland."
+			 },
+			 {
+			 	"name": "Preventive care",
+			 	"score": 10,
+			 	"story": "Medical care contributes for about 20% to the decrease in total mortality. Collective prevention also contributes approximately 20% to the decrease in total mortality. Medical care and collective prevention also make an important contribution to the quality of life."
+			 }
+			 ],
+		"steps": ["Improve coordination in medical care", "Inform about safe cycling"]
+	}, 
+	{
+		"name": "External environment",
+		"description": "The external environment is classified into the physical and social environment. Examples of the physical environment are noise pollution, air pollution, infrastructure, climate, physical geography and innovation. Examples of the social environment are social-cultural environment, municipal policy and SES.",
+		"pitfall": "Amsterdam has a good external environment for cycling. Infrastructure is great and the environmental quality is good. Co-participation and climate could be improved. Co-participation can help motivate cyclist to cycle more, cycling together is more fun than cycling alone. The climate is not something you can change, you can however adapt your bicycle parking to it.",
+		"opportunity": "Amsterdam can improve co-participation by setting up a cycle buddy system. A system that can match/discover people that cycle the same route at the same time. By doing this, there is also a bigger feeling of a social community. To conquer bad weather on a bicycle, covered bike paths or tunnels can be created so that cyclist can stay dry at all times. Highly educated people cycle (on average) more than less educated people, the municipality could give information to its citizens to make less educated people aware of why cycling can be so important.",
+		"items": [
+			{
+				"name": "Noise pollution",
+				"score": 8.2,
+				"story": "Noise pollution in Amsterdam is relatively low, Zurich is seen as the most silent city in the world (50th place), Amsterdam ranks forty-one."
+			},
+			{
+				"name": "Air pollution",
+				"score": 9.2,
+				"story": "Air pollution is low in Amsterdam, 2018 average was 11.5, where a index rating of 0 to 50 means good air quality. Some cities around the world scored an average of 150."
+			},
+			{
+				"name": "Infrastructure",
+				"score": 8.4,
+				"story": "Public transport, bicycle infrastructure and traffic congestion play a role in the infrastructure score."
+			},
+			{
+				"name": "Climate",
+				"score": 7.1,
+				"story": "Amsterdam has a moderate climate, temperatures are relatively mild, but it can be windy sometimes and downfall is common. Melbourne in Australia (A warmer and dryer city) was given a 78.86 (the highest score in the Coya bicycle cities index), whereas Amsterdam was rated a 63.42."
+			},
+			{
+				"name": "Physical geography",
+				"score": 8.5,
+				"story": "Amsterdam's physical geography is near perfect for cycling. It's as flat as a pancake. There is a lot of water in and around the city, but plenty of infrastructural features have been built to coop with this."
+			},
+			{
+				"name": "Innovation",
+				"score": 9,
+				"story": "Amsterdam scores high on innovation indexes. With a score of 50 (the highest in the Cities Innovation Index being 56) it is right up there with world leading cities (innovation wise)."
+			},
+			{
+				"name": "Municipal policy",
+				"score": 10,
+				"story": "Amsterdam spends relatively (compared to their GDP) the most amount of money on its bicycle plan (Meerjaren fietsplan). Amsterdam spends around 70 million per year on bicycle improvements, and has a GDP of 151 bn€, whereas London spends 190 million per year, but it has a much larger GDP of 541 bn€."
+			},
+			{
+				"name": "SES",
+				"score": 8.2,
+				"story": "Compared to the Dutch average, the population of the Amsterdam metropolitan area is characterized by a higher share of working-age individuals. The unemployment rate, however, is also higher. The population in the Amsterdam metropolitan region is clearly relatively higher educated: 47% of individuals aged 15-65 have earned a degree at either a UAS or a research university.."
+			},
+			{
+				"name": "Culture",
+				"score": 9.5,
+				"story": "Amsterdam scores high on this (3.8 out of 4 on Copenhagenize) subject because of the bicycle gender split, modal share, indicators of safety, imago of the bicycle & cargo bikes."
+			},
+			{
+				"name": "Co-participation",
+				"score": 6.7,
+				"story": "According to our research, around 67% of cyclist in Amsterdam cycle together sometimes. This means that the other part (33%) always cycles alone. Co-participation can make cycling much more fun."
+			}
+			],
+			"steps": ["Cycle together with others", "Provide dry bicycle parking in the city", "X-Fittt 2.0 initiative, low SES person guidance"]
+	}
+		]
+}
