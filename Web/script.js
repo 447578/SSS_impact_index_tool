@@ -20,6 +20,7 @@ function makeSliders() {
     smaller.innerText = "/100";
     let circles = document.getElementsByClassName('pie-wrapper');
     let isDraggingArray = [];
+    //Gets all the circles from category's and assignes the sliders to them in order. Setting their sliders to a different number will automaticly update the top bar.
     for (let i = 0; i < circles.length; i++) {
         let score = data.categoryValues[i];
         let slider = document.getElementsByClassName('circleslider')[i];
@@ -110,6 +111,7 @@ function modifyTopbarInputs() {
 modifyTopbarInputs();
 
 function ajax(method, path, callback) {
+    //Standard XMLHTTP function, can be used for any restful call in the future, not bound to a specific url.
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState == XMLHttpRequest.DONE) {
@@ -269,7 +271,7 @@ function getStockCity() {
 
     var citylist = document.getElementById("myList");
 
-    console.log('1234');
+    //Gather the real data, this will be set as the data once it is finished gathering the data.
     ajax('get', 'http://localhost:8080/api/cities', function (response) {
         data.cities = response.response;
         for (let i = 0; i < data.cities.length; i++) {
@@ -286,6 +288,7 @@ function getStockCity() {
         }
         updateCity(data.cities[0]);
     })
+    //This sets the data to be the stock city first, this will happen immediatly as it does not need to wait for a response from the server and gives time to fabricate the front page in HTML DOM.
     inflateCity(data.stockCity[0]);
 
 
@@ -306,6 +309,7 @@ for (var i = 0; i < btns.length; i++) {
 }
 }  */
 
+//This function must ALWAYS be called first and only be called first, this creates the front page dynamically. THis front page will from here on out ony be updated, not remade.
 function inflateCity(city) {
     let totalScore = 0;
     let categoryBlockContainer = document.getElementsByClassName("charts-container")[0];
@@ -485,6 +489,7 @@ function openPopup(category, score) {
     overlay.style.visibility = "visible";
 }
 
+//This call will only be called after the inflateCity function has already been used and only changes the graphs, does not make new graphs. This can be called with any city object, even near empty city objects as long as they fit the syntax. 
 function updateCity(city) {
     let totalScore = 0;
     data.categoryValues = [];
@@ -551,5 +556,5 @@ function closePopup() {
     popup.style.visibility = "hidden";
     document.getElementById("overlay").style.visibility = "hidden";
 }
-
+//This call initiates everyting
 getStockCity();

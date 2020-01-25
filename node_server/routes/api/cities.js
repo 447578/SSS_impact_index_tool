@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const database = require('better-sqlite3')("database.db");
 
-
+//This function returns a promise which gathers all the cities from the database, this is used so that a trigger can be placed upon completing this search.
 function getAllCities() {
     return new Promise(function getCities(resolve) {
         let stmt = database.prepare('SELECT * FROM cities');
@@ -53,6 +53,7 @@ function getAllCities() {
 
 router.get('/', function (req, res) {
     getAllCities().then(function (fulfilled) {
+        //Get the cities, upon completion, check if there are any, if yes, send them away.
         if (fulfilled.length < 1) {
             res.status(404).json({ response: "There are no cities registered" });
         }
@@ -64,6 +65,7 @@ router.get('/', function (req, res) {
     })
 })
 
+//This call is used to create a singular city and add it to the database, this city must have the same exact syntax in the body as the cities returned by the server. But may only be done 1 at a time.
 router.post('/', function (req, res) {
     let cityname = req.body.name;
     let categories = req.body.categories;
@@ -82,6 +84,7 @@ router.post('/', function (req, res) {
     res.status(200).json({ response: cityname + " has been successfully inserted."})
 })
 
+//To delete, only the name is required. Deletes every piece of data related to the city.
 router.delete('/:cityname', function (req, res) {
     let cityname = req.params.cityname;
     let stmt = database.prepare('SELECT * FROM cities WHERE name = ?');
